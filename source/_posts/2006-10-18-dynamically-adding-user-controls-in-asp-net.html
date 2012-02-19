@@ -1,0 +1,5 @@
+---
+title: "Dynamically Adding User Controls in ASP.NET"
+layout: post
+---
+<p>I just got off the phone (at 11:26 Central Time) with a friend who I've been helping for nearly 3 hours to no avail.&nbsp; The problem he has is this:</p> <ul> <li>ASP.NET 2.0 Web Application Project</li> <ul> <li>View State Disabled and Forbidden by company practices.</li> <li>User Control containing several text boxes and 1 button marked delete.</li> <li>Need to lookup <em>n</em> records from the database, and create a User Control for each record in or after the Page Load event.</li> <li>Submit button on page has to validate all User Control data and re-draw with values if validation is failed.&nbsp; Write to database on success.</li></ul></ul> <p>The problem we were stuck on is how to get the button on the user control (Delete) to fire an event when added after Page Load.&nbsp; Any ideas?</p>

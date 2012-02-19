@@ -1,0 +1,5 @@
+---
+title: "Multiple Outbound Connections"
+layout: post
+---
+Recently I've been working with a system that involves an externally facing server acting as a <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnpatterns/html/DesServiceGateway.asp">Gateway</A> for another internal box, in this case a BizTalk Server. This system as such runs into the glorious problem with .NET 1.1 limiting the maximum number of outbound HTTP connections to 2 by default. This could impact performance but this far hasn't been a problem. This system has been working reasonably well for some time, but now there is a desire to change the model of communication from one of submitted requests which receive asynch responses to getting synch responses. This means connection lifetime will increase, and as such the number of simultaneous connections had better rise with it or scalability will go to hell. The place this needs to be changed is in the machine.config file for .NET 1.1 and specifically you are looking for the maxconnection element, which defaults to 2.

@@ -1,0 +1,81 @@
+---
+title: "Unit Testing in BizTalk &ndash; TestFile v2.0"
+layout: post
+---
+Some time ago I made a post about using external file dependencies with NUnit. That post was about using a class called TestFile, which implemented IDisposable, to temporarily store files to disk, and then clean them up afterwards. While learning my way around the BizTalk unit testing capabilities in BizTalk 2009, I realized that this class could use some minor initial modifications to make life easier. To that end, I present to you that updated class. The most important new feature is the ability to support having it generate the file name as a temp file, and the ability to load resources from any Assembly in the AppDomain.   <pre class="brush: csharp;">public class TestFile : IDisposable
+{
+    private bool _disposedValue = false;
+    private string _resourceName;
+    private string _fileName;
+
+    public TestFile(string resourceName) : this(null, resourceName) { }
+
+    public TestFile(string fileName, string resourceName)
+    {
+        if (fileName == null)
+        {
+            this.FileName = Path.GetTempFileName();
+            File.Delete(this.FileName);
+        }
+        else 
+            this.FileName = fileName;
+
+        using (Stream s = LoadResourceFromAppDomain(resourceName))
+        using (StreamReader sr = new StreamReader(s))
+        using (StreamWriter sw = File.CreateText(this.FileName))
+        {
+            sw.Write(sr.ReadToEnd());
+            sw.Flush();
+        }
+    }
+
+    private Stream LoadResourceFromAppDomain(string resourceName)
+    {
+        Assembly[] appDomainAssemblies = AppDomain.CurrentDomain.GetAssemblies();
+        Stream outStream = null;
+
+        foreach (var lAssem in appDomainAssemblies)
+        {
+            outStream = lAssem.GetManifestResourceStream(resourceName);
+            if (outStream != null) return outStream;
+        }
+
+        throw new Exception(string.Format(&quot;Unable to find resource stream {0}&quot;,resourceName));
+    }
+
+    public string FileName
+    {
+        get { return _fileName; }
+        set
+        {
+            _fileName = value;
+        }
+    }
+    
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!this._disposedValue)
+        {
+            if (disposing)
+            {
+                if (File.Exists(_fileName))
+                {
+                    File.Delete(_fileName);
+                }
+            }
+        }
+        this._disposedValue = true;
+    }
+
+    #region IDisposable Members
+
+    public void Dispose()
+    {
+        // Do not change this code.Put cleanup code in Dispose(bool disposing) above.
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    #endregion
+}</pre>

@@ -1,0 +1,5 @@
+---
+title: "BizTalk XmlDisassembler Problem with &lt;?xml?&gt;"
+layout: post
+---
+<p>If you're working with BizTalk, then you owe it to yourself to go read <a href="http://www.winterdom.com/weblog/2006/10/05/BizTalkAndSingleQuotedAttributesInXML.aspx">Tomas Restrepo's latest post</a>.&nbsp; In short, he has located a bug in how the XmlDisassembler handles the &lt;?xml?&gt; declaration to determine encoding.</p> <p>If&nbsp;the XmlDisassembler pipeline component&nbsp;encounters &lt;?xml version='1.0' encoding='UTF-8'?&gt; it will throw an exception which has nothing to do with the real problem.&nbsp; It has no problem with &lt;?xml version='1.0' encoding="UTF-8"?&gt; though.&nbsp; Go read Tomas' article for the full details.&nbsp; Great job Tomas in chasing this down!</p>

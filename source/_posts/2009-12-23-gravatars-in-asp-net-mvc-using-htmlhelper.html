@@ -1,0 +1,135 @@
+---
+title: "Gravatars in ASP.NET MVC using HtmlHelper"
+layout: post
+---
+<p>I’m working on a side-project right now that is using Gravatars and found the <a href="http://frickinsweet.com/ryanlanciaux.com/post/MVC-HtmlHelper-for-Gravatar.aspx">wonderful article by Ryan Lanciaux</a> on creating an HtmlHelper extension.&#160; His extension was good, but did not use integrate with the FluentHtml model of MvcContrib, so I refactored his original into the following class, which does the same thing, but allows for fluent building of all the options.&#160; Someone will undoubtedly point out that this could have used a couple of Enumerations, and their right, but I decided the API was static enough that I’d just create the methods. Anyway, I hope someone else gets some use out of this.</p>  <pre class="brush: csharp">using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Web.Mvc;
+using System.Web.Routing;
+using MvcContrib.FluentHtml.Elements;
+using System;
+using System.Web;
+
+public class Gravatar : Element<gravatar>
+{
+    private string _email;
+    private string _default;
+    private string _rating;
+    private int _size;
+    private string _alt;
+
+    public Gravatar(string email) : base(&quot;img&quot;)
+    {
+        _email = email;
+    }
+
+    public Gravatar DefaultToUrl(string url)
+    {
+        _default = url;
+        return this;
+    }
+
+    public Gravatar DefaultToIdenticon()
+    {
+        _default = &quot;identicon&quot;;
+        return this;
+    }
+
+    public Gravatar DefaultToMonsterId()
+    {
+        _default = &quot;monsterid&quot;;
+        return this;
+    }
+
+    public Gravatar DefaultToWavatar()
+    {
+        _default = &quot;wavatar&quot;;
+        return this;
+    }
+
+    public Gravatar DefaultTo404()
+    {
+        _default = &quot;404&quot;;
+        return this;
+    }
+
+    public Gravatar Size(int size)
+    {
+        if (size &lt; 1 || size &gt; 512) throw new ArgumentException(&quot;Gravatars can only be between 1 and 512 in size.&quot;, &quot;size&quot;);
+        _size = size;
+        return this;
+    }
+
+    public Gravatar GRated()
+    {
+        _rating = &quot;g&quot;;
+        return this;
+    }
+
+    public Gravatar PGRated()
+    {
+        _rating = &quot;pg&quot;;
+        return this;
+    }
+
+    public Gravatar RRated()
+    {
+        _rating = &quot;r&quot;;
+        return this;
+    }
+
+    public Gravatar XRated()
+    {
+        _rating = &quot;x&quot;;
+        return this;
+    }
+
+    public Gravatar AlternateText(string alt)
+    {
+        _alt = alt;
+        return this;
+    }
+
+    protected override TagRenderMode TagRenderMode
+    {
+        get
+        {
+            return TagRenderMode.SelfClosing;
+        }
+    }
+
+    public override string ToString()
+    {
+        var src = string.Format(&quot;http://www.gravatar.com/avatar/{0}?&quot;, EncryptMD5(_email));
+
+        if (!String.IsNullOrEmpty(_rating)) src += string.Format(&quot;r={0}&amp;&quot;, HttpUtility.UrlEncode(_rating));
+        if (_size != 0) src += string.Format(&quot;s={0}&amp;&quot;, _size);
+        if (!String.IsNullOrEmpty(_default)) src += string.Format(&quot;d={0}&amp;&quot;, HttpUtility.UrlEncode(_default));
+
+        base.builder.MergeAttribute(&quot;src&quot;, src);
+        base.Attr(&quot;alt&quot;, _alt ?? &quot;Gravatar&quot;);
+
+        return base.ToString();
+    }
+
+    private static string EncryptMD5(string Value)
+    {
+        using(var md5 = new MD5CryptoServiceProvider())
+        {
+            byte[] valueArray = System.Text.Encoding.ASCII.GetBytes(Value);
+            valueArray = md5.ComputeHash(valueArray);
+            string encrypted = &quot;&quot;;
+            for (int i = 0; i &lt; valueArray.Length; i++)
+                encrypted += valueArray[i].ToString(&quot;x2&quot;).ToLower();
+            return encrypted;
+        }
+    }
+}
+
+public static class GravatarHtmlHelper
+{
+    public static Gravatar Gravatar(this HtmlHelper html, string email)
+    {
+        return new Gravatar(email);
+    }
+}</pre>

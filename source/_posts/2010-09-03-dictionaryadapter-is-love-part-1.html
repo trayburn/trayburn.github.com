@@ -1,0 +1,88 @@
+---
+title: "DictionaryAdapter is Love (Part 1)"
+layout: post
+---
+<p>Nestled deep within the Castle Project repository, there is a wonderful library maintained by Improving Enterprises&rsquo; own Craig Neuwirt which can forever change how you deal with the assortment of Key/Value pair structures in our programming life.&nbsp; That library is called DictionaryAdapter, or more properly Castle.Components.DictionaryAdapter and the source can be found at : <a title="http://github.com/castleproject/Castle.Core" href="http://github.com/castleproject/Castle.Core">http://github.com/castleproject/Castle.Core</a></p>
+<p>So how does this library work?&nbsp; Let&rsquo;s take a quick tour around, shall we?</p>
+<p><strong>So you&rsquo;ve got a Dictionary&hellip;</strong></p>
+<pre class="brush: csharp;">
+        static void Main(string[] args)
+        {
+            var dict = new Dictionary&lt;string, object&gt;()
+                {
+                    { &quot;UserId&quot;, 1234567 },
+                    { &quot;UserFirstName&quot;, &quot;Tim&quot; },
+                    { &quot;UserLastName&quot;, &quot;Rayburn&quot; }
+                };
+        }</pre>
+<p>We deal with dictionaries like this all the time in .NET, the easiest example of which is ASP.NET Session but many others exist.&nbsp; Now lets assume that we wanted to access this information in a structured way.&nbsp; That is to say, instead of writing something like:</p>
+<pre class="brush: csharp;">
+        public static string UglyWayToGetUserFirstName(Dictionary&lt;string, object&gt; dict)
+        {
+            string userFirstName = &quot;UserFirstName&quot;;
+            if (dict.ContainsKey(userFirstName)) 
+                return dict[userFirstName] as string;
+            return null;
+        }</pre>
+<p>I instead want to write code which access the information using a strongly typed interfaced like this:</p>
+<pre class="brush: csharp;">
+    public interface IUserData
+    {
+        int UserId { get; set; }
+        string UserFirstName { get; set; }
+        string UserLastName { get; set; }
+    }</pre>
+<p>Which would produce code like this:</p>
+<pre class="brush: csharp;">
+        public static string CleanWayToGetUserFirstName(IUserData data)
+        {
+            return data.UserFirstName;
+        }</pre>
+<p>How do I do that?&nbsp; DictionaryAdapter to the rescue.&nbsp; Add a reference to Castle.Core, and a using statement for Castle.Components.DictionaryAdapter and then the following code will work:</p>
+<pre class="brush: csharp;">
+        static void Main(string[] args)
+        {
+            var dict = new Dictionary&lt;string, object&gt;()
+                {
+                    { &quot;UserId&quot;, 1234567 },
+                    { &quot;UserFirstName&quot;, &quot;Tim&quot; },
+                    { &quot;UserLastName&quot;, &quot;Rayburn&quot; }
+                };
+
+            IUserData data = new DictionaryAdapterFactory()
+               .GetAdapter&lt;IUserData&gt;(dict);
+
+            Console.WriteLine(CleanWayToGetUserFirstName(data));
+            Console.ReadLine();
+        }</pre>
+<p>Simple, eh?&nbsp; But there is much more coming.&nbsp; As you can see, there is a default convention that matches the property name of our interface to the key in the dictionary.&nbsp; Lets assume that you&rsquo;re the type of person who believes having the word User in front of each property on the interface is a bad idea, but keeping it on the keys which lack the context of being IUserData makes sense.&nbsp; No problem, enter aliasing.&nbsp; Modify your interface like so:</p>
+<pre class="brush: csharp;">
+    public interface IUserData
+    {
+        [Key(&quot;UserId&quot;)]
+        int Id { get; set; }
+
+        [Key(&quot;UserFirstName&quot;)]
+        string FirstName { get; set; }
+
+        [Key(&quot;UserLastName&quot;)]
+        string LastName { get; set; }
+    }</pre>
+<p>And now your&nbsp; interface main method (no longer using our rather useless CleanWayToGetUserFirstName example above) can be refactored like so:</p>
+<pre class="brush: csharp;">
+        static void Main(string[] args)
+        {
+            var dict = new Dictionary&lt;string, object&gt;()
+                {
+                    { &quot;UserId&quot;, 1234567 },
+                    { &quot;UserFirstName&quot;, &quot;Tim&quot; },
+                    { &quot;UserLastName&quot;, &quot;Rayburn&quot; }
+                };
+
+            IUserData data = new DictionaryAdapterFactory()
+                .GetAdapter&lt;IUserData&gt;(dict);
+
+            Console.WriteLine(data.FirstName);
+            Console.ReadLine();
+        }</pre>
+<p>That&rsquo;s a good introduction to the basics of DictionaryAdapter, but there is a lot more depth here that I hope to cover in future posts.</p>
