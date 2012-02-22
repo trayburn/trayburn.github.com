@@ -7,7 +7,7 @@ categories: improving
 ---
 {% img /images/ie-logo-small.jpg %}
 
-If you've every met me, or hung around me for any length of time, you've probably heard me rave about my employer [Improving Enterprises][ie] [just a few][post1] [times before][post2].  Here are some things you may have hard about us:
+If you've every met me, or hung around me for any length of time, you've probably heard me rave about my employer [Improving Enterprises][ie] [just a few][post1] [times before][post2].  Here are some things you may have heard about us:
 
 * You may have heard that we employ the best, and we do, from [David O'Hara][david] to [Devlin Liles][devlin] to [Craig Neuwirt][craig], and many more.  
 * You may have heard that we're now growing beyond Texas, and we are.  Offices are located in Dallas, College Station, Columbus Ohio, and growing presences in Houston and other areas.
@@ -18,7 +18,7 @@ So why am I telling you all of this again?  Because Improving is looking for som
 ## What is an Improver? ##
 
 {% pullquote %}
-Those of us who work for this company have come to call ourselves Improvers.  That little gerund that is our name is something we hold very dear.  Our company motto is "Improving : It's What We Do" and that alone if the thread which ties together the amazingly diverse collection of people who work at this company.  {"Some of our technologists are literally world renowned, others are fresh out of school"}.  Some work in Java or .NET, others are Project Managers or Quality Assurance analysts.  But we are all united by the face that we are constantly striving to improve.
+Those of us who work for this company have come to call ourselves Improvers.  That little gerund that is our name is something we hold very dear.  Our company motto is "Improving : It's What We Do" and that alone is the thread which ties together the amazingly diverse collection of people who work at this company.  {"Some of our technologists are literally world renowned, others are fresh out of school"}.  Some work in Java or .NET, others are Project Managers or Quality Assurance analysts.  But we are all united by the fact that we are constantly striving to improve.
 {% endpullquote %}
 
 {% pullquote right %}
