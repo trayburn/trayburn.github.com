@@ -12,6 +12,6 @@ footer: true
 If you have questions and would like to contact me, I can be reached at Tim@TimRayburn.net or by phone at 817-760-0002.
 
 [mvp]: http://microsoft.com/mvp
-[book]: http://www.amazon.com/Entity-Framework-4-1-Experts-Cookbook/dp/1849684464/ref=sr_1_1?ie=UTF8&qid=1329713927&sr=8-1
+[book]: http://www.packtpub.com/entity-framework-4-1-experts-test-driven-development-architecture-cookbook/book
 [ie]: http://improvingenterprises.com
 [dtf]: http://DallasTechFest.com
