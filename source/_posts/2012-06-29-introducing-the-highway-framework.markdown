@@ -40,6 +40,8 @@ Now all that is left is to register with our container, and we're off and runnin
 
 {% codeblock lang:csharp %}
 var container = new WindsorContainer();
+// Update, added in the most recent version of Highway.Data 1.2
+container.Kernel.Resolver.AddSubResolver(new ArrayResolver(container.Kernel));
 container.Register(
     Component.For<IMappingConfiguration>()
         .ImplementedBy<MyMappings>(),
@@ -102,7 +104,7 @@ We provide three NuGet Packages:
 
 [book]: http://www.packtpub.com/entity-framework-4-1-experts-test-driven-development-architecture-cookbook/book
 [ie]: http://improvingenterprises.com
-[hw]: http://github.com/HighwayFramework/Highway.Data
+[hw]: http://HighwayFramework.com
 [hwweb]: http://highwayframework.github.com/Highway.Data
 [hwdoc]: http://highwayframework.github.com/Highway.Data/docs/index.html
 [dl]: http://devlinliles.com/
