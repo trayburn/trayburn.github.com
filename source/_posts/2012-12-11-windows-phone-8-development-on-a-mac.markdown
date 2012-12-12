@@ -28,7 +28,15 @@ But fear not my valiant friends, for there is an answer.  [VMWare Fusion][fusion
 
 Obviously this solution is a "It works on my machine" situation, but I'm sure you will find success down this path.
 
+## Update 12/12/12
+Several questions were asked, so quickly:
+
+* Does Parallels support this?  As of today, no.  [See this support forum post from them.][plls]
+* Does your processor have to support SLAT?  Yes, your physical hardware must be current enough to support SLAT.  For Macs, this means you need to be running an i5 or i7 mac.
+* What hardware are you running?  As of today, I'm running this solution on a Thunderbolt MacBook Pro running a 2.3 Ghz i7 and Lion, not Mountain Lion.  The official Model Identifier for my mac is MacBookPro8,3.
+
 
 [slat]: http://www.ryanlowdermilk.com/2012/09/does-my-computer-support-slat/
 [op]: http://social.msdn.microsoft.com/Forums/en-US/wptools/thread/ed72010c-321c-4667-97b2-3ff1540e7f87
 [fusion]: http://www.vmware.com/products/fusion/overview.html
+[plls]: http://forum.parallels.com/showthread.php?t=264780
