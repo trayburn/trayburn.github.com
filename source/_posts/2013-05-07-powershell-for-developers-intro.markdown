@@ -1,3 +1,11 @@
+---
+layout: post
+title: "PowerShell for Developers - Intro"
+date: 2013-05-07 13:00
+comments: true
+categories: PowerShell
+---
+
 >  I must go down to the seas again, to the lonely sea and the sky,
 >  And all I ask is a tall ship and a star to steer her by, 
 >  And the wheel's kick and the wind's song and the white sail's shaking, 
