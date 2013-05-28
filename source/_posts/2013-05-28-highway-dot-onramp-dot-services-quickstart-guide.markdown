@@ -16,7 +16,7 @@ So let's create a Windows Service, that we can actually debug, and install/unins
 
 - Start Visual Studio and create a Console Application in C#.  When you're done, the Program.cs should look like the default:
 
-``` C#
+``` 
     class Program
     {
         static void Main(string[] args)
@@ -98,7 +98,7 @@ By default the console only receives `Info` level or higher, but the debugger wi
 
 Also from Castle.Core, we've used Dictionary Adapter to provide a testable abstraction over App Settings.  This is setup in the `CastleInstaller.cs`, with the following lines of code:
 
-``` C#
+```
 // Our configuration magic, register all interfaces ending in Config from
 // this assembly, and create implementations using DictionaryAdapter
 // from the AppSettings in our app.config.
@@ -118,7 +118,7 @@ This tells Castle to register all **Types from the current assembly** which are 
 
 We've included an interface example in the `Config` folder to show you how this might work:
 
-``` C#
+```
 [KeyPrefix("Service.")]
 public interface IServiceConfig
 {
