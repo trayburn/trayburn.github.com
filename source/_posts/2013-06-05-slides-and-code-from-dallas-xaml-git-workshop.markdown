@@ -6,7 +6,7 @@ comments: true
 categories: presentations
 ---
 
-For those who attended my GIT Workship last night at Dallas XAML, you can find the code and slides here: https://github.com/trayburn/Presentation-GitWorkshop
+For those who attended my GIT Workship last night at Dallas XAML, you can find the code and slides here: [https://github.com/trayburn/Presentation-GitWorkshop](https://github.com/trayburn/Presentation-GitWorkshop)
 
 I've fixed the problems with my demo scripts that create repositories, so you can clone that repository locally and execute :
 
