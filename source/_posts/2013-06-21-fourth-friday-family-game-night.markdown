@@ -3,6 +3,7 @@ layout: post
 title: "Fourth Friday Family Game Night"
 date: 2013-06-21 15:54
 comments: true
+alias: [/fffgn/index.html]
 categories: Gaming
 ---
 You are officially invited to join the consultants of Improving Enterprises for board games, fun and frivolity.  Every 4th Friday of the month we will gather for a family friendly night of games.  We'll have drinks of all sorts available, and a large selection of games.
