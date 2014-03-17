@@ -23,7 +23,7 @@ If you submit yourself and are accepted should expect:
 * The program is 9-6 plus homework assignments including user group attendance and supplemental online courses. 
 * It is intended to be an intensive, “drink from the firehose" experience.
 * You will be paid a nominal salary.
-* The salary will increase once they pass the board exam and become billable.
+* The salary will increase once you pass the board exam and become billable.
 * There is an interview process.
 
 If this excites you, then reach out to me at Tim@TimRayburn.net or on Twitter/GitHub @TRayburn and we'll get you started in the process.
