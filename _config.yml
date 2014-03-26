@@ -94,6 +94,7 @@ disqus_show_comment_count: false
 
 # Google Analytics
 google_analytics_tracking_id: UA-2693862-1
+google_analytics_property: timrayburn.net
 
 # Facebook Like
 facebook_like: true
