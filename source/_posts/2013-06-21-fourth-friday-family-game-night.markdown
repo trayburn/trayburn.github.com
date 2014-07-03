@@ -6,6 +6,12 @@ comments: true
 alias: [/fffgn/index.html]
 categories: Gaming
 ---
+## UPDATE
+
+This event has now been renamed Dallas Game Night and you can [find all the info you want at the new website!](http://DallasGameNight.TimRayburn.net)
+
+## Original Post
+
 You are officially invited to join the consultants of Improving Enterprises for board games, fun and frivolity.  Every 4th Friday of the month we will gather for a family friendly night of games.  We'll have drinks of all sorts available, and a large selection of games.
 
 ## Who is invited?
@@ -40,7 +46,7 @@ Great!  We love to teach people how to play.
 Contact one of our official Hosts, they'll be more than happy to field any questions you might have:
 
 [Tim Rayburn](http://TimRayburn.net) can be reached at tim@timrayburn.net or 817-760-0002
- 
+
 [Ty Crockett](http://tycrockett.com) can be reached at ty.crockett@improvingenterprises.com
 
 ## Sponsors
@@ -48,5 +54,3 @@ Contact one of our official Hosts, they'll be more than happy to field any quest
 This event is graciously hosted by the incredible folks at [Improving Enterprises](http://improvingenterprises.com).  They open their offices, soda fridge, and other facilities to us on a monthly basis and we're thrilled to have their support.  If you're an IT professional, please chat with on of their employees who attend to learn more about this great company.
 
 ![Improving Enterprises Logo](http://timrayburn.net/images/ie-logo-small.jpg)  
-
-  
