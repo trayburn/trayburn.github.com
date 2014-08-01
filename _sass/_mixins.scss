@@ -1,0 +1,57 @@
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+
+
+@mixin mq($point, $IE9: false, $query1: min, $query2: width) {
+    @if $IE9 == true{
+        .lt-ie9 & {
+            @content;
+        }
+        @media screen and (#{$query1}-#{$query2}: $point / $doc-font-size +em) {
+            @content;
+        }
+    }
+    @else {
+        @media screen and (#{$query1}-#{$query2}: $point / $doc-font-size +em) {
+            @content;
+        }
+    }
+}
+
+
+@mixin pushbutton($colour: $orange, $font-colour: rgb(255,255,255), $opacity: 0.85) {
+    color: $font-colour;
+    text-shadow: 0 1px 0 darken($colour, 10%);
+    line-height: 1;
+    padding: 26px 40px;
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid $colour;
+    border-radius: 4px;
+    background-color: darken($colour, 10%);
+    box-shadow: 0 4px 0 darken($colour, 20%);
+    @include transition(all .1s linear);
+    &:hover {
+        border-color: $colour;
+        opacity : $opacity;
+        color: mix($colour, $font-colour, 10%);
+    }
+    &:focus {
+        border-color: darken($colour, 30%);
+    }
+    &:active {
+        border-color: darken($colour, 20%);
+        bottom: -4px;
+        box-shadow: none;
+    }
+}
