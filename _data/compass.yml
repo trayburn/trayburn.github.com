@@ -6,7 +6,7 @@ import_paths:
 - bower_components/foundation/scss
 project_path: "/Users/Tim/projects/newBlog"
 http_path: "/"
-css_dir: css
+css_dir: assets/css
 sass_dir: _sass
 images_dir: images
 javascripts_dir: javascripts
