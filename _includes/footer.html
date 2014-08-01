@@ -1,0 +1,41 @@
+
+<!-- BEGIN #widgets -->
+<section id="widgets" class="clearfix widgets">
+  <div class="four large-4 columns">
+    <h3>Flicker Photostream</h3>
+    <!--  -->
+    <div id="flickerPhotos" data-limit="6" data-random="true" data-userid="30005186@N02"></div>
+  </div>
+  <div class="four large-4 columns">
+    <h3>Latest Blog Entries</h3>
+    <div class="blog-entries">
+      {% for post in site.posts limit:2 %}
+      <article>
+        <h5>
+            <a href="{{ post.url }}">
+              {{ post.title }}
+            </a>
+          </h5>
+        <span>{{ post.date }}</span>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="four large-4 columns">
+    <h3>About {{ site.title }}</h3>
+    <p>
+      {{ site.description }}
+    </p>
+  </div>
+</section>
+<!-- END /#widgets -->
+
+<footer class="site-footer">
+  <div class="copyright">
+    &copy; 2014
+    <a href="http://TimRayburn.net">Tim Rayburn</a>, All Rights Reserved.  </div>
+  <a title="Scroll To Top" href="#top" id="scroll-top" class="scroll-top">
+    <span>Top</span>
+    <i class="icon-circleup"></i>
+  </a>
+</footer>

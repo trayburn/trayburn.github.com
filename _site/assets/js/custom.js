@@ -3,15 +3,15 @@ if( typeof $ == 'undefined' ){
 }
 
 
-if (!("ontouchstart" in document.documentElement)){ 
-    document.documentElement.className += " no-touch"; 
+if (!("ontouchstart" in document.documentElement)){
+    document.documentElement.className += " no-touch";
 }
 
 // ipad and iphone hover fix
 // Ref: http://blog.0100.tv/2010/05/fixing-the-hover-event-on-the-ipadiphoneipod/
-if((navigator.userAgent.match(/iPhone/i)) 
-	|| (navigator.userAgent.match(/iPod/i)) 
-	|| (navigator.userAgent.match(/iPad/i))) 
+if((navigator.userAgent.match(/iPhone/i))
+	|| (navigator.userAgent.match(/iPod/i))
+	|| (navigator.userAgent.match(/iPad/i)))
 {
     $(".portfolio-4-columns a .overlay").on('click', function(){
         //we just need to attach a click event listener to provoke iPhone/iPod/iPad's hover event
@@ -31,10 +31,10 @@ if((navigator.userAgent.match(/iPhone/i))
 =======================================================================================*/
 var supports = {
 	init: function(){
-		var browser, 
-		classList, 
-		os, 
-		platform, 
+		var browser,
+		classList,
+		os,
+		platform,
 		retina;
 
 	    retina = window.devicePixelRatio > 1 ? "retina" : "no-retina";
@@ -78,13 +78,13 @@ var Loader = {
 			length: 7, // The length of each line
 			width: 3, // The line thickness
 			radius: 10  // The radius of the inner circle
-		}, 
+		},
 		'custom' : {
 			lines : 10, // The number of lines to draw
 			length: 7, // The length of each line
 			width: 3, // The line thickness
 			radius: 10,   // The radius of the inner circle
-			corners: 1.0, // 
+			corners: 1.0, //
 			rotate: 22, // The rotation offset
 			color: '#fff', // #rgb or #rrggbb
 			speed: 1, // Rounds per second
@@ -107,15 +107,15 @@ var Loader = {
 				opts.color = color;
 			}
 			// Initailize Spinner
-			var spinner = new Spinner( 
-				$.extend({ 
-					color: color 
-				}, opts ) 	
+			var spinner = new Spinner(
+				$.extend({
+					color: color
+				}, opts )
 			).spin();
 
 			var target = $('#loading');
 				target.append(spinner.el);
-			
+
 		}else{
 			try{
 				"Spinner class not available.";
@@ -149,7 +149,7 @@ sectionBlocks = {
 	    $(elem).each( function(){
 	    	var self 	  = $(this);
 	    	var dataBlock = self.data('block');
-		
+
 	    	if ('show' == dataBlock && dataBlock != null ) {
 				self.on('show', sectionBlocks.showBlock( self ) );
 	    	}else if( 'hide' == dataBlock && dataBlock != null ){
@@ -158,7 +158,7 @@ sectionBlocks = {
 				self.on('show', sectionBlocks.showBlock( self ) );
 			}
 	    });
-	
+
 	},
 	showBlock : function( param ){
 		param.show();
@@ -172,7 +172,7 @@ sectionBlocks = {
 
 
 /*===============================================================================================
-/*	Contact Form Placeholder Text 
+/*	Contact Form Placeholder Text
 /*  Form Validation
 =================================================================================================*/
 var contactForm = {
@@ -212,7 +212,7 @@ var contactForm = {
 		        }
 			},
 			submitHandler: function( response ) {
-				
+
 				Loader.Show('large', '#303030');
 				contactForm.processForm();
 
@@ -223,7 +223,7 @@ var contactForm = {
 		});
 	},
 	processForm: function(event){
-		
+
 		var contactForm  = $('#contactForm');
 		var formMethod   = contactForm.attr('method');
 		var formAction   = contactForm.attr('action');
@@ -252,7 +252,7 @@ var contactForm = {
 				$('html, body').animate({
 					scrollTop: 0
 				});
-				
+
 			}
 		});
 		return false;
@@ -268,7 +268,7 @@ var contactForm = {
 var responsiveTabs = {
 	init: function(){
 		$('#horizontalTab').easyResponsiveTabs({
-            type: 'default', //Types: default, vertical, accordion           
+            type: 'default', //Types: default, vertical, accordion
             width: 'auto', //auto or any width like 600px
             fit: true   // 100% fit in a container
         });
@@ -284,7 +284,7 @@ var responsiveTabs = {
 var responsiveAccordion = {
 	init: function(){
 		 $('#accordion').easyResponsiveTabs({
-            type: 'accordion', //Types: default, vertical, accordion           
+            type: 'accordion', //Types: default, vertical, accordion
             width: 'auto', //auto or any width like 600px
             fit: true,   // 100% fit in a container
             closed: 'accordion', // Start closed if in accordion view
@@ -329,13 +329,13 @@ var animateHeader = {
 	},
 	triggerScroll: function(anim){
 		/*window.addEventListener('scroll', animateHeader.addEvent, false);*/
-		
+
 		if ( window.addEventListener ) {
-		  window.addEventListener('scroll', animateHeader.addEvent, false); 
+		  window.addEventListener('scroll', animateHeader.addEvent, false);
 		} else if (window.attachEvent)  {
 		  window.attachEvent('onscroll', animateHeader.addEvent, false);
 		}
-		
+
 	},
 	addEvent: function(){
 		if(!animateHeader.didScroll)
@@ -346,8 +346,8 @@ var animateHeader = {
 	},
 	initScroll: function(){
 		var vertScroll = animateHeader.setScrollY();
-		
-		if( vertScroll >= animateHeader.changeHeaderOn 
+
+		if( vertScroll >= animateHeader.changeHeaderOn
 			&& $(window).width() >= 899 )
 		{
 			animateHeader.siteElem.addClass('shrink');
@@ -370,7 +370,7 @@ var animateHeader = {
 =============================================================================================*/
 var scrollEvent ={
  	init: function(){
- 		$('#scroll-top').on('click', scrollEvent.scrollUp);	
+ 		$('#scroll-top').on('click', scrollEvent.scrollUp);
  	},
  	scrollUp: function(e){
     	e.preventDefault();
@@ -404,9 +404,9 @@ var blogSlider = {
 					pauseOnAction: true,
 	                controlNav: false,
 	                directionNav: true,
-	                reverse: false, 
-	                prevText: "", 
-		 			nextText: "", 
+	                reverse: false,
+	                prevText: "",
+		 			nextText: "",
 	                animationLoop: false,
 	                smoothHeight: true,
 	                slideshow: false,
@@ -414,7 +414,7 @@ var blogSlider = {
 	                controlsContainer : ".slider-container"
 				});
 		});
-		
+
 	}
 };
 
@@ -423,14 +423,14 @@ var blogSlider = {
 
 
 /*===============================================================================================
-	Flexslider for Portfolio 
+	Flexslider for Portfolio
 =================================================================================================*/
 var portfolioSlider = {
 	options : {
 		animation: "slide",
 		controlNav: true,
 	    directionNav: false,
-	    reverse: false, 
+	    reverse: false,
 	    animationLoop: false,
 	    slideshow: false,
 	    keyboard: true,
@@ -448,7 +448,7 @@ var portfolioSlider = {
 
 
 /*================================================================================================
- jPlayer Plugin 
+ jPlayer Plugin
 ==================================================================================================*/
 var jplayer_init = {
 	init: function(){
@@ -468,7 +468,7 @@ var jplayer_init = {
 					self.find('.jp-player').each(function(){
 						var post_id  = $(this).data('id'),
 							dataSrc  = $(this).data('src');
-				
+
 					if( $().jPlayer ){
 						$("#jquery-jplayer-audio-"+post_id).jPlayer({
 							ready: function(){
@@ -484,7 +484,7 @@ var jplayer_init = {
 							cssSelectorAncestor: "#jp-audio-interface-"+post_id,
 							supplied: "mp3"
 						});
-					} 
+					}
 				  });
 			   });
 			}
@@ -519,7 +519,7 @@ var stickyNavigation = {
 		    }
 		};
 		var element = document.querySelector("#masthead");
-		
+
 		if(typeof Headroom !== 'undefined'){
 			var header  = new Headroom(element, opts);
 			header.init();
@@ -569,8 +569,8 @@ var responsiveVideo = {
 ===============================================================================================*/
 var mobileMenu = {
 	init: function(){
-		var navigation = responsiveNav('.primary-menu', 
-		{   
+		var navigation = responsiveNav('.primary-menu',
+		{
 			animate: true,        // Boolean: Use CSS3 transitions, true or false
 		    transition: 280,      // Integer: Speed of the transition, in milliseconds
 		    label: "",        // String: Label for the navigation toggle
@@ -600,7 +600,7 @@ var niceScrollInit = {
 	_s.cursorColor = $('html').data('cursor');
 
 	var nice = $('html').niceScroll({
-        cursorcolor: "#"+_s.cursorColor || '#14ddb3', 
+        cursorcolor: "#"+_s.cursorColor || '#14ddb3',
         railpadding: {
             top: 0,
             right: 5,
@@ -625,7 +625,7 @@ var niceScrollInit = {
 /*==============================================================================================
  Vertical Timeline Add More Posts
 ================================================================================================*/
-  var loadMorePosts = { 
+  var loadMorePosts = {
   	init: function(){
   		var el 	    	  = this;
   		el.selector 	  = $('.vertical-timeline');
@@ -634,21 +634,21 @@ var niceScrollInit = {
 	    el.curStart 	  = 0;
 	    el.count    	  = el.customCount;
 	    el.items    	  = new Array();
-	    
+
   		el.limitPosts(el);
-  		$('#load-more a').on('click', el.showPosts);	
+  		$('#load-more a').on('click', el.showPosts);
   	},
   	limitPosts: function(el){
   		var lst    = $(".vertical-timeline");
             el.len = $(".vertical-timeline .post-item").length;
-            
+
 
           	// Hide button
   			if(el.count == el.len){
   				$('#load-more a').hide();
   				$('.blog-content--timeline').css('padding-bottom', '20px');
   			}
-  		
+
             if (el.len <= el.count)
               return;
 
@@ -657,7 +657,7 @@ var niceScrollInit = {
 	            $(this).remove();
 	        });
 
-	        
+
 	        var html="";
 	        for (el.curStart; el.curStart < el.count && el.curStart < el.len; el.curStart++) {
 	            html += '<li class="post-item">' + $(el.items[el.curStart]).html() + '</li>';
@@ -673,7 +673,7 @@ var niceScrollInit = {
   		e.preventDefault();
 
   		var self = $(this);
-  		
+
   		if( loadMorePosts.curStart >= loadMorePosts.len ){
   		  loadMorePosts.curStart = 0;
   		}
@@ -682,7 +682,7 @@ var niceScrollInit = {
         for (loadMorePosts.curStart; loadMorePosts.curStart < (len + loadMorePosts.count) && loadMorePosts.curStart < loadMorePosts.len; loadMorePosts.curStart++) {
             html += '<li class="post-item">' + loadMorePosts.items[loadMorePosts.curStart].html() + '</li>';
         }
-        
+
 		self.remove('a');
         loadMorePosts.appendLoader(loadMorePosts);
         $('#load-more .status').addClass('active');
@@ -697,7 +697,7 @@ var niceScrollInit = {
 				responsiveVideo.init();
 				jplayer_init.init();
 	        });
-        	
+
         	$('.load-more-posts').remove();
         	$('.blog-content--timeline').css('padding-bottom', '20px');
     	}, _throttleDelay );
@@ -742,15 +742,15 @@ var flickrPhotos = {
 			this.dataLimit,
 			this.dataRandom,
 			this.userId
-		);	
+		);
 	},
 	pluginInit: function(count, random, userid){
 		$('#flickerPhotos').flickrush({
-			limit: count, // The number of photos to display 
-			random: random, // Display the photos in a random sequence 
-			id: userid, // ID of the flickr user 
-			ssl: true // 
-		}); 
+			limit: count, // The number of photos to display
+			random: random, // Display the photos in a random sequence
+			id: userid, // ID of the flickr user
+			ssl: true //
+		});
 	}
 };
 
@@ -768,16 +768,16 @@ function customImage( el, opacity){
 			dataImage 	 = customHeader.data('image'),
 			dataOpacity  = customHeader.data('opacity'),
 			dataColor 	 = customHeader.data('color');
-			
+
 			// Path to image banner directory
-			imgBg        = "assets/images/banner/"+ dataImage; 	
-			$(el).backstretch(imgBg);	
-			
+			imgBg        = "/assets/images/banner/"+ dataImage; 	
+			$(el).backstretch(imgBg);
+
 			$(el+' .backstretch').css({
 				'opacity': dataOpacity
 			});
 			$(el).css('background-color', "#"+dataColor);
-			
+
 	}
 
 
@@ -810,7 +810,7 @@ $(document).ready( function(){
 			if ( $('#primary').length ) {
 				var nav = responsiveNav('#primary');
 				nav.destroy();
-		
+
 				$('#primary').each(function(){
             		this.className = this.className.split(' ')[0];
         		});
@@ -823,16 +823,16 @@ $(document).ready( function(){
 
 		}
 		if(lastScreenWidth > 899 && window.innerWidth <= 899 ){
-			$('#primary').superfish('destroy');				
+			$('#primary').superfish('destroy');
 			mobileMenu.init();
 		}
 		lastScreenWidth = window.innerWidth;
     });
-    
+
     function screenSize(){
     	if( window.innerWidth >= 899 ){
 			animateHeader.init();
-			subMenu.init();	
+			subMenu.init();
 		}else{
 			mobileMenu.init();
 			$('#primary').superfish('destroy');
@@ -844,8 +844,8 @@ $(document).ready( function(){
 		customImage( '#custom-header', 0.15 );
 
 	}else if(body.hasClass('blog') ){
-		
-		customImage( '#custom-header');	
+
+		customImage( '#custom-header');
 		blogSlider.init();
 		responsiveVideo.init();
 
@@ -861,15 +861,15 @@ $(document).ready( function(){
 		portfolioFilter.init();
 		customImage( '#custom-header', '');
 
-	}else if(body.hasClass( 'portfolio-2-columns' ) 
+	}else if(body.hasClass( 'portfolio-2-columns' )
 		|| body.hasClass( 'portfolio-4-columns' ) ){
 
-		portfolioFilter.init();		
+		portfolioFilter.init();
 		customImage('#custom-header');
 
 	}else if( body.hasClass('contact') ){
 
-		customImage('#custom-header');		
+		customImage('#custom-header');
 
 	}else if( body.hasClass('single-portfolio') ){
 
@@ -881,7 +881,7 @@ $(document).ready( function(){
 	}
 	else if(body.hasClass('sample-page'))
 	{
-		customImage('#custom-header');			
+		customImage('#custom-header');
 	}
 
 	// Initailize Scripts
@@ -890,7 +890,7 @@ $(document).ready( function(){
 	flickrPhotos.init();
 	contactForm.init();
 	responsiveTabs.init();
-	responsiveAccordion.init();  
+	responsiveAccordion.init();
 	stickyNavigation.init();
 
 

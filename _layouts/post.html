@@ -1,0 +1,32 @@
+---
+layout: post-default
+---
+<div class="blog--section-block clearfix">
+  <div id="blog" class="blog-content">
+    <div class="format format-image">
+      <header class="page-header blog-title">
+        <div class="post-meta">
+          <p>
+            Published at: <span class="publish-on">{{ page.date | date: "%b %-d, %Y" }}</span> / Category: <a href="#">Image</a> / <a href="#comments"> 2 Comments</a>
+          </p>
+        </div>
+      </header>
+      {% if page.image %}
+      <figure>
+        <img src="/assets/images/blog/placeholder1120x500.jpg" alt="This is the image" data-at2x="/assets/images/blog/placeholder1120x500@2x.jpg">
+      </figure>
+      {% endif %}
+      <article>
+        <div class="blog-subtitle">
+          {% if page.subtitle %}
+          <h4>{{ page.subtitle }}</h4>
+          {% endif %}
+          <p>
+            {{ content }}
+          </p>
+          <p>&nbsp;</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
