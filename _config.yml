@@ -9,6 +9,10 @@ github_username:  trayburn
 
 # Build settings
 markdown: kramdown
-permalink: pretty
+permalink: /blog/:title/
 gems:
 - jekyll-compass
+
+# Kramdown Settings
+kramdown:
+  input: GFM

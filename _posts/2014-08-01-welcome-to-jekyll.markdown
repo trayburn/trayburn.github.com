@@ -18,6 +18,17 @@ print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
 {% endhighlight %}
 
+Explain here.
+
+``` ruby
+def print_hello(name)
+  puts "This is a test"
+end
+
+print_hello("Tim")
+#=> prints "This is a test" to STDOUT.
+```
+
 Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
 
 [jekyll-gh]: https://github.com/jekyll/jekyll

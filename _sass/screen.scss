@@ -268,16 +268,16 @@ h1, h2, h3, h4, h5, h6{
   position: relative;
   overflow: hidden;
 }
-.services-inner-wrapper .large-3{
+.services-inner-wrapper .service {
   text-align: center;
 }
-.services-inner-wrapper .large-3 h3{
+.services-inner-wrapper .service h3{
   font-weight: $font-weight-normal;
   font-family: 'montserratregular', sans-serif;
   font-size: 24px;
   color: $paleyellow;
 }
-.services-inner-wrapper .large-3 p{
+.services-inner-wrapper .service p{
   word-wrap: break-word;
   text-align: center;
   display: block;

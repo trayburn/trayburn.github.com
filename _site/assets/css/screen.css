@@ -1648,12 +1648,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* line 271, ../../../_sass/screen.scss */
-.services-inner-wrapper .large-3 {
+.services-inner-wrapper .service {
   text-align: center;
 }
 
 /* line 274, ../../../_sass/screen.scss */
-.services-inner-wrapper .large-3 h3 {
+.services-inner-wrapper .service h3 {
   font-weight: 400;
   font-family: 'montserratregular', sans-serif;
   font-size: 24px;
@@ -1661,7 +1661,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* line 280, ../../../_sass/screen.scss */
-.services-inner-wrapper .large-3 p {
+.services-inner-wrapper .service p {
   word-wrap: break-word;
   text-align: center;
   display: block;

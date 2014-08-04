@@ -2,7 +2,6 @@ if( typeof $ == 'undefined' ){
 	var $ = jQuery;
 }
 
-
 if (!("ontouchstart" in document.documentElement)){
     document.documentElement.className += " no-touch";
 }
@@ -24,6 +23,8 @@ if((navigator.userAgent.match(/iPhone/i))
 }
 
 
+Foundation.global.namespace = '';
+$(document).foundation();
 
 
 /*=====================================================================================
@@ -770,7 +771,7 @@ function customImage( el, opacity){
 			dataColor 	 = customHeader.data('color');
 
 			// Path to image banner directory
-			imgBg        = "/assets/images/banner/"+ dataImage; 	
+			imgBg        = "/assets/images/banner/"+ dataImage;
 			$(el).backstretch(imgBg);
 
 			$(el+' .backstretch').css({
