@@ -16,3 +16,7 @@ gems:
 # Kramdown Settings
 kramdown:
   input: GFM
+
+# Collections
+collections:
+- projects
