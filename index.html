@@ -56,7 +56,6 @@ subtitle: Technology is a means, not an end.
     <!-- BEGIN .portfolio-items -->
     <div class="grid portfolio-items section-block clearfix" data-equalizer>
       {% for project in site.projects %}
-      {% if project.homepage %}
       <article class="grid-6" data-effect="fade">
         <a href="single-portfolio.html">
           <figure>
@@ -71,7 +70,6 @@ subtitle: Technology is a means, not an end.
           </div>
         </a>
       </article>
-      {% endif %}
       {% endfor %}
     </div>
     <!-- END /.portfolio-items -->
