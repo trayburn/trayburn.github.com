@@ -33,71 +33,30 @@
 
     </div>
 
-    <div class="navbar">
+    
+<div class="navbar">
   <nav class="site-navigation navigation">
     <ul id="primary" class="primary-menu">
       <li class="current-menu-item">
-        <a href="index.html">Home</a>
+        <a href="/">Home</a>
       </li>
-      <li>
-        <a href="#">Consulting</a>
-        <ul class="sub-menu">
-          <li>
-            <a href="portfolio2.html">
-
-                2 Columns
-
-              </a>
-          </li>
-          <li>
-            <a href="portfolio3.html">
-
-                3 Columns
-
-              </a>
-          </li>
-          <li>
-            <a href="portfolio4.html">
-
-                4 Columns
-
-              </a>
-          </li>
-          <li>
-            <a href="single-portfolio.html">
-
-                Single Template
-
-              </a>
-          </li>
-        </ul>
+      
+      <li >
+        <a href="/consulting">Consulting</a>
       </li>
-      <li>
-        <a href="#">Community</a>
-        <ul class="sub-menu">
-          <li>
-            <a href="blog-fullwidth.html">Blog Fullwidth</a>
-          </li>
-          <li>
-            <a href="timeline-blog.html">Vertical Timeline</a>
-          </li>
-          <li>
-            <a href="single-blog.html">Single Blog Post</a>
-          </li>
-          <li>
-            <a href="single-blog-timeline.html">Single Blog Timeline</a>
-          </li>
-          <li>
-            <a href="blog-sidebar.html">Blog with Sidebar</a>
-          </li>
-        </ul>
+      
+      <li >
+        <a href="/community">Community</a>
       </li>
-      <li>
-        <a href="sample.html">Gaming</a>
+      
+      <li >
+        <a href="/creativity">Creativity</a>
       </li>
-      <li>
-        <a href="contact.html">Contact</a>
+      
+      <li >
+        <a href="/contact">Contact</a>
       </li>
+      
     </ul>
 
     <a href="#" class="nav-toggle icon-menu" aria-hidden="false"></a>
@@ -119,48 +78,53 @@
 </div>
 
       <section id="main" class="site-content row" role="main">
-        <!-- BEGIN #services -->
-<section id="services" data-block="show">
-  <!-- BEGIN .page-header -->
+        <section id="services" data-block="show">
   <header class="page-header page-header--home">
-    <h2 class="home-title"><span>About Tim</span></h2>
+    <h2 class="home-title"><span>About Me</span></h2>
   </header>
 
   <div class="services-outer-wrapper">
     <div class="services-inner-wrapper" data-equalizer>
-
+      
+      
       <div class="small-12 medium-6 large-4 columns service" data-effect="fade">
         <a href="#" class="font-icon"><i class="fa fa-4x fa-signal"></i></a>
         <h3>Consulting</h3>
         <p data-equalizer-watch>Currently Tim works as a Principal Consultant at Improving Enterprises, helping organizations succeed with .NET projects, agile project management, and community engagement.</p>
-        <a href="#" class="btn bordered-btn">Learn More</a>
+        <a href="/consulting" class="btn bordered-btn">Learn More</a>
       </div>
-
+      
+      
+      
       <div class="small-12 medium-6 large-4 columns service" data-effect="fade">
         <a href="#" class="font-icon"><i class="fa fa-4x fa-users"></i></a>
         <h3>Community</h3>
         <p data-equalizer-watch>Tim is a recognized speaker throughout the country on matters .NET, Agile and career management.  He has keynoted conferences, organized conferences, led user groups, and spoken at user groups hundreds of times.</p>
-        <a href="#" class="btn bordered-btn">Learn More</a>
+        <a href="/community" class="btn bordered-btn">Learn More</a>
       </div>
-
+      
+      
+      
       <div class="small-12 medium-6 large-4 columns service" data-effect="fade">
         <a href="#" class="font-icon"><i class="fa fa-4x fa-steam"></i></a>
-        <h3>Gaming</h3>
+        <h3>Creativity</h3>
         <p data-equalizer-watch>Tim is a passionate gamer, both table-top gaming and computer gaming. As the former host of Radio Free Hommlet, a podcast dedicated to D&amp;D 4th Edition and player of many MMORPGs he's always ready to discuss games.</p>
-        <a href="#" class="btn bordered-btn">Learn More</a>
+        <a href="/creativity" class="btn bordered-btn">Learn More</a>
       </div>
-
+      
+      
+      
+      
     </div>
   </div>
-  <!-- END /.page-header -->
 </section>
-<!-- /END #services -->
 
 <!-- BEGIN #portfolio -->
 <section id="portfolio">
   <!-- BEGIN .page-header -->
   <header class="page-header page-header--home">
-    <h2 class="home-title"><span>Tim's Projects</span></h2>
+    <h2 class="home-title"><span>My Projects</span></h2>
+    <p class="home-subtitle">Open Source that I have, or do, contribute to.</p>
   </header>
   <!-- END /.page-header -->
 
@@ -176,9 +140,9 @@
             <span class="overlay">
                   <i class="icon-add"></i>
                 </span>
-            <img src="/assets/images/home/placeholder560x400.jpg" data-at2x="/assets/images/home/placeholder560x400@2x.jpg" alt="This is the image">
+            <img src="/images/highway.png" data-at2x="/assets/images/home/placeholder560x400@2x.jpg" alt="This is the image">
           </figure>
-          <h3>Highway Data</h3>
+          <h3>Highway Framework</h3>
           <div class="entry-content" data-equalizer-watch>
             Highway.Data is a set of NuGet packages which provide a testable, clean, reusable abstraction over various ORMs on the market today.  Primarily focused on EntityFramework, this project embodies the best practices of working with data in .NET.
           </div>
@@ -191,22 +155,7 @@
             <span class="overlay">
                   <i class="icon-add"></i>
                 </span>
-            <img src="/assets/images/home/placeholder560x400.jpg" data-at2x="/assets/images/home/placeholder560x400@2x.jpg" alt="This is the image">
-          </figure>
-          <h3>Highway OnRamp MVC</h3>
-          <div class="entry-content" data-equalizer-watch>
-            This project was created to reduce the spin-up time for a new MVC project.  Bringing together Castle.Windsor and several other excellent projects, this package acts as a template for your MVC project to add logging, dependency injection, and several other basic necessities.
-          </div>
-        </a>
-      </article>
-      
-      <article class="grid-6" data-effect="fade">
-        <a href="single-portfolio.html">
-          <figure>
-            <span class="overlay">
-                  <i class="icon-add"></i>
-                </span>
-            <img src="/assets/images/home/placeholder560x400.jpg" data-at2x="/assets/images/home/placeholder560x400@2x.jpg" alt="This is the image">
+            <img src="/images/nunit.png" data-at2x="/assets/images/home/placeholder560x400@2x.jpg" alt="This is the image">
           </figure>
           <h3>NUnit</h3>
           <div class="entry-content" data-equalizer-watch>
@@ -227,7 +176,7 @@
     <span class="cta-label">Need to get ahold of me? Have a project? Speaking engagement? OSS idea? Then reach out!</span>
   </div>
   <div class="small-12 medium-6 large-4 columns">
-    <a class="button button-flat button-block primary" href="portfolio3.html">My Contact Info</a>
+    <a class="button button-flat button-block primary" href="/contact">My Contact Info</a>
   </div>
 </section>
 <!-- END /#call-to-action -->
@@ -238,7 +187,7 @@
 
   <header class="page-header page-header--home">
     <h2 class="home-title">
-      <span>What people say about Tim</span>
+      <span>What people say about me</span>
     </h2>
   </header>
 
@@ -291,10 +240,10 @@
   <header class="page-header page-header--home">
     <h2 class="home-title">
 
-          <span>Our Clients</span>
+          <span>My Clients</span>
 
         </h2>
-    <p class="home-subtitle">A sub-title or tagline can go here</p>
+    <p class="home-subtitle">Places I've worked over the years.</p>
   </header>
 
   <div class="client-wrapper">

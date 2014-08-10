@@ -4,49 +4,33 @@ title: Tim Rayburn
 subtitle: Technology is a means, not an end.
 ---
 
-
-<!-- BEGIN #services -->
 <section id="services" data-block="show">
-  <!-- BEGIN .page-header -->
   <header class="page-header page-header--home">
-    <h2 class="home-title"><span>About Tim</span></h2>
+    <h2 class="home-title"><span>About Me</span></h2>
   </header>
 
   <div class="services-outer-wrapper">
     <div class="services-inner-wrapper" data-equalizer>
-
+      {% for section in site.navigation %}
+      {% if section.description %}
       <div class="small-12 medium-6 large-4 columns service" data-effect="fade">
-        <a href="#" class="font-icon"><i class="fa fa-4x fa-signal"></i></a>
-        <h3>Consulting</h3>
-        <p data-equalizer-watch>Currently Tim works as a Principal Consultant at Improving Enterprises, helping organizations succeed with .NET projects, agile project management, and community engagement.</p>
-        <a href="#" class="btn bordered-btn">Learn More</a>
+        <a href="#" class="font-icon"><i class="fa fa-4x {{ section.icon }}"></i></a>
+        <h3>{{ section.name }}</h3>
+        <p data-equalizer-watch>{{ section.description }}</p>
+        <a href="/{{section.url}}" class="btn bordered-btn">Learn More</a>
       </div>
-
-      <div class="small-12 medium-6 large-4 columns service" data-effect="fade">
-        <a href="#" class="font-icon"><i class="fa fa-4x fa-users"></i></a>
-        <h3>Community</h3>
-        <p data-equalizer-watch>Tim is a recognized speaker throughout the country on matters .NET, Agile and career management.  He has keynoted conferences, organized conferences, led user groups, and spoken at user groups hundreds of times.</p>
-        <a href="#" class="btn bordered-btn">Learn More</a>
-      </div>
-
-      <div class="small-12 medium-6 large-4 columns service" data-effect="fade">
-        <a href="#" class="font-icon"><i class="fa fa-4x fa-steam"></i></a>
-        <h3>Gaming</h3>
-        <p data-equalizer-watch>Tim is a passionate gamer, both table-top gaming and computer gaming. As the former host of Radio Free Hommlet, a podcast dedicated to D&amp;D 4th Edition and player of many MMORPGs he's always ready to discuss games.</p>
-        <a href="#" class="btn bordered-btn">Learn More</a>
-      </div>
-
+      {% endif %}
+      {% endfor %}
     </div>
   </div>
-  <!-- END /.page-header -->
 </section>
-<!-- /END #services -->
 
 <!-- BEGIN #portfolio -->
 <section id="portfolio">
   <!-- BEGIN .page-header -->
   <header class="page-header page-header--home">
-    <h2 class="home-title"><span>Tim's Projects</span></h2>
+    <h2 class="home-title"><span>My Projects</span></h2>
+    <p class="home-subtitle">Open Source that I have, or do, contribute to.</p>
   </header>
   <!-- END /.page-header -->
 
@@ -62,7 +46,7 @@ subtitle: Technology is a means, not an end.
             <span class="overlay">
                   <i class="icon-add"></i>
                 </span>
-            <img src="/assets/images/home/placeholder560x400.jpg" data-at2x="/assets/images/home/placeholder560x400@2x.jpg" alt="This is the image">
+            <img src="{{ project.image }}" data-at2x="/assets/images/home/placeholder560x400@2x.jpg" alt="This is the image">
           </figure>
           <h3>{{ project.name }}</h3>
           <div class="entry-content" data-equalizer-watch>
@@ -83,7 +67,7 @@ subtitle: Technology is a means, not an end.
     <span class="cta-label">Need to get ahold of me? Have a project? Speaking engagement? OSS idea? Then reach out!</span>
   </div>
   <div class="small-12 medium-6 large-4 columns">
-    <a class="button button-flat button-block primary" href="portfolio3.html">My Contact Info</a>
+    <a class="button button-flat button-block primary" href="/contact">My Contact Info</a>
   </div>
 </section>
 <!-- END /#call-to-action -->
@@ -94,7 +78,7 @@ subtitle: Technology is a means, not an end.
 
   <header class="page-header page-header--home">
     <h2 class="home-title">
-      <span>What people say about Tim</span>
+      <span>What people say about me</span>
     </h2>
   </header>
 
@@ -147,10 +131,10 @@ subtitle: Technology is a means, not an end.
   <header class="page-header page-header--home">
     <h2 class="home-title">
 
-          <span>Our Clients</span>
+          <span>My Clients</span>
 
         </h2>
-    <p class="home-subtitle">A sub-title or tagline can go here</p>
+    <p class="home-subtitle">Places I've worked over the years.</p>
   </header>
 
   <div class="client-wrapper">
