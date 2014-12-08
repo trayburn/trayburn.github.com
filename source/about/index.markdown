@@ -5,7 +5,16 @@ sharing: true
 footer: true
 ---
 ### Official Bio ###
-{% img left /images/TimRayburn-Web.png %}Tim Rayburn is a Principal Consultant with [Improving Enterprises][ie], a software and project management consulting company in Dallas, TX.  Since 2007 he has been annually awarded the [Microsoft MVP for Connected Systems Development][mvp] in recognition of his expertise and community leadership.  He is the organizer of [Dallas TechFest][dtf], where through the work of an amazing staff they bring an incredible multi-technology conference to life every year in Dallas.  He is the author of ["Entity Framework 4.1: Expert's Cookbook", with Devlin Liles][book], and can be found speaking across the nation of agile process, distributed architecture, and data access technologies.  He lives in Arlington Texas with his amazing wife Kate and their loyal dog Gandalf.
+{% img left /images/tim-rayburn.png %}Tim Rayburn is a Vice President of Consulting
+with [Improving Enterprises][ie], a software and project management consulting
+company in Dallas, TX.  He is a passionate advocate of apprenticeship and mentorship
+in corporate environments.  Since 2007 he has been awarded the
+[Microsoft MVP][mvp] in recognition of his
+expertise and community leadership.  He is also a 
+[conference organizer][dtf], [an author][book],
+and can be found speaking across the nation on agile processes, software design,
+and career management.  He lives in the North Dallas area with
+his amazing wife Kate and their loyal dog Gandalf.
 
 ### Contact Info ###
 
