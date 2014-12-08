@@ -7,13 +7,13 @@ layout: post-default
       <header class="page-header blog-title">
         <div class="post-meta">
           <p>
-            Published at: <span class="publish-on">{{ page.date | date: "%b %-d, %Y" }}</span> / Category: <a href="#">Image</a> / <a href="#comments"> 2 Comments</a>
+            Published at: <span class="publish-on">{{ page.date | date: "%b %-d, %Y" }}</span>
           </p>
         </div>
       </header>
       {% if page.image %}
       <figure>
-        <img src="/assets/images/blog/placeholder1120x500.jpg" alt="This is the image" data-at2x="/assets/images/blog/placeholder1120x500@2x.jpg">
+        <img src="{{ site.url }}/images/{{ page.image }}" alt="{{ page.imageAlt }}" />
       </figure>
       {% endif %}
       <article>
