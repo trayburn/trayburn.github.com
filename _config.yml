@@ -10,8 +10,10 @@ github_username:  trayburn
 # Build settings
 markdown: kramdown
 permalink: /blog/:title/
+safe: false
 gems:
 - jekyll-compass
+- jekyll-redirect-from
 
 # Kramdown Settings
 kramdown:

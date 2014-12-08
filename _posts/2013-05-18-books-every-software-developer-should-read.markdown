@@ -3,8 +3,11 @@ layout: post
 title: "Books Every Software Developer Should Read"
 date: 2013-05-18 07:30
 comments: true
-alias: [/books/index.html, /must-read/index.html, /mustread/index.html]
-categories: 
+redirect_from:
+  - /books/index.html
+  - /must-read/index.html
+  - /mustread/index.html
+categories:
 ---
 
 Yesterday at AgileDotNet, before one of my sessions, we were discussing books which every software developer should read with the room, and particularly with a bunch of SMU students who came down to Houston to attend.  I promised I would post the list of those books to my blog, so here they are:

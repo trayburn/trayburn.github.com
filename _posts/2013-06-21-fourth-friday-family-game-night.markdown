@@ -3,7 +3,8 @@ layout: post
 title: "Fourth Friday Family Game Night"
 date: 2013-06-21 15:54
 comments: true
-alias: [/fffgn/index.html]
+redirect_from:
+  - /fffgn/index.html
 categories: Gaming
 ---
 ## UPDATE
