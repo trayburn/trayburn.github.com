@@ -1,0 +1,76 @@
+---
+title: "Simple Reflection Based Assignment Using Extension Methods"
+layout: post
+---
+<p>Have you ever had two objects, of different types, and wished that C# could just be smart enough to realize that objA.FirstName should be assigned to objB.FirstName?&nbsp; For me this comes up quite a bit when working with WCF services.&nbsp; I don't want a service to directly expose my internal business object type, because that type might change on a different schedule than that of my data contract.&nbsp; So I often end up with objects that have identical property names, usually the service being a subset of the internal class, but obviously of different types.&nbsp; How can I handle assigning objDC from objInternal without writing a line of code (or generating a line of code) for every single property?&nbsp; Enter AssignFrom ... with this code, you'll get something as simple as objDC.AssignFrom(objInternal);</p><pre class="csharpcode"><span class="kwrd">using</span> System;
+<span class="kwrd">using</span> System.Collections.Generic;
+<span class="kwrd">using</span> System.Linq;
+<span class="kwrd">using</span> System.Text;
+<span class="kwrd">using</span> System.Reflection;
+<span class="kwrd">using</span> System.Diagnostics;
+
+<span class="kwrd">namespace</span> TestCSharp
+{
+    <span class="kwrd">public</span> <span class="kwrd">static</span> <span class="kwrd">class</span> ObjectExtensions
+    {
+        <span class="kwrd">public</span> <span class="kwrd">static</span> T AssignFrom&lt;T&gt;(<span class="kwrd">this</span> T obj, <span class="kwrd">object</span> from)
+        {
+            Type toType = obj.GetType();
+            Type fromType = from.GetType();
+
+            var toInfo = toType.GetProperties();
+            var fromInfo = fromType.GetProperties();
+
+            <span class="kwrd">foreach</span> (var fromProp <span class="kwrd">in</span> fromInfo)
+            {
+                <span class="kwrd">bool</span> assigned = <span class="kwrd">false</span>;
+                <span class="kwrd">foreach</span> (var toProp <span class="kwrd">in</span> toInfo)
+                {
+
+                    <span class="kwrd">if</span> (toProp.CanWrite &amp;&amp; fromProp.CanRead &amp;&amp;
+                        toProp.PropertyType.Equals(fromProp.PropertyType) &amp;&amp;
+                        toProp.Name.Equals(fromProp.Name) &amp;&amp;
+                        toProp.GetIndexParameters().Count() == 0 &amp;&amp;
+                        fromProp.GetIndexParameters().Count() == 0)
+                    {
+                        toProp.SetValue(obj, fromProp.GetValue(from, <span class="kwrd">null</span>), <span class="kwrd">null</span>);
+                        assigned = <span class="kwrd">true</span>;
+                    }
+                }
+
+                Debug.Assert(assigned, 
+                    <span class="kwrd">string</span>.Format(
+                    <span class="str">"Property {0} was not populated to the To object."</span>, 
+                    fromProp.Name));
+            }
+
+            <span class="kwrd">return</span> obj;
+        }
+    }
+}
+</pre>
+<style type="text/css">.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }
+</style>
