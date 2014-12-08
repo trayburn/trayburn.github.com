@@ -1,0 +1,21 @@
+---
+title: "Solution Clone v1.0"
+layout: post
+---
+<p>I&rsquo;ve had a little utility I&rsquo;ve used on my consulting gigs from time to time that I wrote a while back, and I&rsquo;ve finally decided it needed a home of its own.&nbsp; As you can read below, it allows me to keep fairly complex pre-built project structures, and then duplicate them with a click of a button, renaming them to whatever I need.&nbsp; You can <a href="http://www.codeplex.com/clone/Release/ProjectReleases.aspx?ReleaseId=23298">download the latest release</a>, or you can <a href="http://www.codeplex.com/clone">check out the project on CodePlex</a>.</p>
+<p><b>Project Description</b> <br />
+A utility to allow you to clone an existing solution, renaming it as you do so, and updating references inside the various files.</p>
+<h4>The Problem</h4>
+<p>Do you have a favorite project structure you setup every single time you start a new project? I surely did, and I got tired of having to re-create that structure every time. Especially since my structure was a complex many levels deep set of build files and other support files and projects I used when implementing the <a href="http://www.codeplex.com/biztalkdeployment">BizTalk Deployment Framework</a>.</p>
+<h4>The Solution</h4>
+<p>Tired of that work, because I'm a lazy programmer, I created this project that would duplicate an existing solution directory. I setup an archive project called SolutionNameHere, which contained projects like SolutionNameHere.Orchestrations, and then let this program translate every reference to &quot;SolutionNameHere&quot; in either a path or a filename (or even some file contents) to whatever new name I wanted.</p>
+<h4>File Types</h4>
+<p>At the current time, Solution Clone is aware of the following types of files within your projects that it does more than simply rename and move. These files will be modified to update any references to the old solution name as they are moved. These file types currently include:</p>
+<ul>
+    <li>.sln - Visual Studio Solution Files</li>
+    <li>.vbproj - Visual Basic Project Files</li>
+    <li>.csproj - C# Project Files</li>
+    <li>.build - Build files used by NAnt and other build mechanisms</li>
+    <li>.nant - NAnt scripts</li>
+</ul>
+<p>This list will almost certainly be updated in future versions to include other types of files.</p>
