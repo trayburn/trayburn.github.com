@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width">
   <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
 
-  <title>TimRayburn.net - Yukon Doomed?</title>
+  <title>TimRayburn.net - Split() Function for SQL Server 2000</title>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" type="text/css" href="/style.css" media="all">
@@ -69,7 +69,7 @@
       <div id="custom-header" class="site-background" data-image="dallas-skyline-1280-850.jpg" data-opacity="0.50" data-color="181a25">
   <div id="tagline" class="site-tagline row">
     <h1>
-      Yukon Doomed?
+      Split() Function for SQL Server 2000
     </h1>
     <h2>
       
@@ -84,7 +84,7 @@
       <header class="page-header blog-title">
         <div class="post-meta">
           <p>
-            Published at: <span class="publish-on">Sep 26, 2003</span>
+            Published at: <span class="publish-on">Mar 24, 2004</span>
           </p>
         </div>
       </header>
@@ -93,7 +93,7 @@
         <div class="blog-subtitle">
           
           <p>
-            <p>Don't get me wrong, I enjoy working with SQL Server, but I think Microsoft has made a strategic mistake with Yukon.</p><p>SQL Server needs to support truly Shared Nothing clustering.  In a world where Microsoft is espousing the need for Web Services, where they are pushing for a de-centralization of software from any given computer, to multiple computers at any distance, their database will have to handle the expectations of such a world.</p><p>If I try to sell a piece of software that runs on remote servers via a variety of clients in the field (Web, WAP, Winform, etc) then my client will expect, reasonably or not, almost no downtime on the application.  That means my database must be robust enough to handle small hardware problems without stopping.  Oracle has had this going for a while now, you can cluster Oracle servers, and then take just 1 of them off-line to work with, the rest will pick up the load.</p><p>We need to get Scale-Out not just Scale-Up for SQL Server, or you're just cruising for problems.</p>
+            <script type="text/javascript"><!--google_ad_client = "pub-3977329255226857";//Banner Ads - Hot Articlesgoogle_ad_slot = "8482486806";google_ad_width = 468;google_ad_height = 60;google_cpa_choice = ""; // on file//--></script><script type="text/javascript"src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script><P><FONT size=2>This function was originally found at the following address:</FONT></P><P><FONT size=2><A href="http://msdn.microsoft.com/library/en-us/dnsqlmag01/html/treatyourselfListing_01.txt">http://msdn.microsoft.com/library/en-us/dnsqlmag01/html/treatyourselfListing_01.txt</A></FONT></P><P><FONT size=2>But strikes me as so utterly useful that I'm archiving here as an article just so that I have a copy when next I find myself in a situation where I need it.</FONT></P><P><FONT size=2>CREATE FUNCTION fn_Split(@sText varchar(8000), @sDelim varchar(20) = ' ')<BR>RETURNS @retArray TABLE (idx smallint Primary Key, value varchar(8000))<BR>AS<BR>BEGIN<BR>DECLARE @idx smallint,<BR>@value varchar(8000),<BR>@bcontinue bit,<BR>@iStrike smallint,<BR>@iDelimlength tinyint<BR><BR>IF @sDelim = 'Space'<BR>BEGIN<BR>SET @sDelim = ' '<BR>END<BR><BR>SET @idx = 0<BR>SET @sText = LTrim(RTrim(@sText))<BR>SET @iDelimlength = DATALENGTH(@sDelim)<BR>SET @bcontinue = 1<BR><BR>IF NOT ((@iDelimlength = 0) or (@sDelim = 'Empty'))<BR>BEGIN<BR>WHILE @bcontinue = 1<BR>BEGIN<BR><BR>--If you can find the delimiter in the text, retrieve the first element and<BR>--insert it with its index into the return table.<BR><BR>IF CHARINDEX(@sDelim, @sText)&gt;0<BR>BEGIN<BR>SET @value = SUBSTRING(@sText,1, CHARINDEX(@sDelim,@sText)-1)<BR>BEGIN<BR>INSERT @retArray (idx, value)<BR>VALUES (@idx, @value)<BR>END<BR><BR>--Trim the element and its delimiter from the front of the string.<BR>--Increment the index and loop.<BR>SET @iStrike = DATALENGTH(@value) + @iDelimlength<BR>SET @idx = @idx + 1<BR>SET @sText = LTrim(Right(@sText,DATALENGTH(@sText) - @iStrike))<BR><BR>END<BR>ELSE<BR>BEGIN<BR>--If you can’t find the delimiter in the text, @sText is the last value in<BR>--@retArray.<BR>SET @value = @sText<BR>BEGIN<BR>INSERT @retArray (idx, value)<BR>VALUES (@idx, @value)<BR>END<BR>--Exit the WHILE loop.<BR>SET @bcontinue = 0<BR>END<BR>END<BR>END<BR>ELSE<BR>BEGIN<BR>WHILE @bcontinue=1<BR>BEGIN<BR>--If the delimiter is an empty string, check for remaining text<BR>--instead of a delimiter. Insert the first character into the<BR>--retArray table. Trim the character from the front of the string.<BR>--Increment the index and loop.<BR>IF DATALENGTH(@sText)&gt;1<BR>BEGIN<BR>SET @value = SUBSTRING(@sText,1,1)<BR>BEGIN<BR>INSERT @retArray (idx, value)<BR>VALUES (@idx, @value)<BR>END<BR>SET @idx = @idx+1<BR>SET @sText = SUBSTRING(@sText,2,DATALENGTH(@sText)-1)<BR><BR>END<BR>ELSE<BR>BEGIN<BR>--One character remains.<BR>--Insert the character, and exit the WHILE loop.<BR>INSERT @retArray (idx, value)<BR>VALUES (@idx, @sText)<BR>SET @bcontinue = 0 <BR>END<BR>END<BR><BR>END<BR><BR>RETURN<BR>END</FONT><BR><BR></P>
 
           </p>
           <p>&nbsp;</p>
