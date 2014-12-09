@@ -30,7 +30,7 @@ display_category: consulting
 
 {% if post != page.display_category %}
 
-<article class="grid-6" data-effect="fade">
+<article class="grid-4" data-effect="fade">
 <a href="{{ post.url }}">
 <figure>
 <span class="overlay">
@@ -38,7 +38,7 @@ display_category: consulting
 </span>
 <img src="/images/{{ post.image }}" alt="{{ post.title }}">
 </figure>
-<h3>{{ project.title }}</h3>
+<h3>{{ post.title }}</h3>
 <div class="entry-content" data-equalizer-watch>
 {{ project.description }}
 </div>

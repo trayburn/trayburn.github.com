@@ -4,6 +4,11 @@ layout: post-default
 <div class="blog--section-block clearfix">
   <div id="blog" class="blog-content">
     <div class="format format-image">
+      {% if page.image %}
+      <figure>
+        <img src="{{ site.url }}/images/{{ page.image }}" alt="{{ page.imageAlt }}" />
+      </figure>
+      {% endif %}
       <header class="page-header blog-title">
         <div class="post-meta">
           <p>
@@ -11,11 +16,6 @@ layout: post-default
           </p>
         </div>
       </header>
-      {% if page.image %}
-      <figure>
-        <img src="{{ site.url }}/images/{{ page.image }}" alt="{{ page.imageAlt }}" />
-      </figure>
-      {% endif %}
       <article>
         <div class="blog-subtitle">
           {% if page.subtitle %}

@@ -1,4 +1,8 @@
 .blog-content {
+  p {
+    line-height: 200%;
+  }
+
   pre {
     border: 1px solid black;
     margin: 10px;
@@ -15,5 +19,11 @@
     margin-left: 20px;
     text-transform: none;
     color: #777;
+
+    margin-bottom: 20px;
+
+    li {
+      line-height: 200%;
+    }
   }
 }
