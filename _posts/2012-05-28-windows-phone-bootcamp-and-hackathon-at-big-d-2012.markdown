@@ -3,7 +3,7 @@ layout: post
 title: "Windows Phone Bootcamp and Hackathon at Big (D) 2012"
 date: 2012-05-28 08:38
 comments: true
-categories: mobile event
+categories: mobile
 ---
 Want to learn what it takes to build a Windows Phone application?
 

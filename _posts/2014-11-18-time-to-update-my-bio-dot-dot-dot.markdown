@@ -3,7 +3,8 @@ layout: post
 title: "Time to update my bio..."
 date: 2014-11-18 14:01
 comments: true
-categories: improving
+image: stairway-small.jpg
+categories: consulting
 ---
 
 So I'm thrilled to announce that after having joined the amazing team at

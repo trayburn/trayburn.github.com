@@ -3,7 +3,7 @@ layout: post
 title: "Working with Dynamic Schema in Azure Mobile Services"
 date: 2012-12-12 11:45
 comments: true
-categories: azure, wp8
+categories: azure mobile
 ---
 
 Lately I've been developing on a side project using the awesome [Azure Mobile Services][ams] offering from Microsoft.  Specifically I've been developing a Windows Phone 8 application, the details of which will be revealed in time.  One of the best features of Azure Mobile Services is the ability to work with a Dynamic Schema, it will automatically insert new columns for fields it has never received before.

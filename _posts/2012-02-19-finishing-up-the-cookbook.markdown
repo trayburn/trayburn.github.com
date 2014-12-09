@@ -3,7 +3,6 @@ layout: post
 title: "Finishing Up The Cookbook"
 date: 2012-02-19 22:55
 comments: true
-categories: writing C# EF
 ---
 {% img left /images/efcookbook.jpg "Entity Framework 4.1 : Expert's Cookbook" "Our Book" %}While it has not been discussed here a great deal, my good friend [Devlin Liles][dl] and I have been writing a book together.  It's called ["Entity Framework 4.1 : Expert's Cookbook"][book].  I will be clear upfront, Devlin did the lion's share of the work on this book, but the finished product is something which I am totally proud to be associated with.
 

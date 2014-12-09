@@ -3,7 +3,6 @@ layout: post
 title: "Converted to Octopress"
 date: 2012-02-19 12:30
 comments: true
-categories: github ruby
 ---
 For those who actually visit my blog on a regular basis, you'll have noticed that there have been alot of changes over the last couple of months.  For some time now I've been unhappy with my blogging platform, which up until recently had been Graffiti a platform formerly by Telligent.  Graffiti started out with amazing promise, and then ... nothing.  It was never updated, and eventually was made open source, but without a primary contributor it just died.
 

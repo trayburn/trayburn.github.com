@@ -29,17 +29,17 @@ navigation:
     name: Consulting
     url: consulting
     icon: fa-signal
-    description: Currently Tim works as a Principal Consultant at Improving Enterprises, helping organizations succeed with .NET projects, agile project management, and community engagement.
+    description: Currently I work as a Vice President of Consulting at Improving Enterprises, helping organizations succeed with .NET projects, agile project management, and community engagement.
   -
     name: Community
     url: community
     icon: fa-users
-    description: Tim is a recognized speaker throughout the country on matters .NET, Agile and career management.  He has keynoted conferences, organized conferences, led user groups, and spoken at user groups hundreds of times.
+    description: I am a popular speaker throughout the country on matters .NET, Agile and career management.  I have keynoted conferences, organized conferences, led user groups, and spoken at user groups hundreds of times.
   -
     name: Creativity
     url: creativity
     icon: fa-steam
-    description: Tim is a passionate gamer, both table-top gaming and computer gaming. As the former host of Radio Free Hommlet, a podcast dedicated to D&amp;D 4th Edition and player of many MMORPGs he's always ready to discuss games.
+    description: I am a passionate gamer, both table-top gaming and computer gaming. As the former host of Radio Free Hommlet, a podcast dedicated to D&amp;D 4th Edition and player of many MMORPGs I'm always ready to discuss games.
   -
     name: Contact
     url: contact

@@ -3,7 +3,7 @@ layout: post
 title: "Slides and Code from Dallas XAML GIT Workshop"
 date: 2013-06-05 06:37
 comments: true
-categories: presentations
+categories: community
 ---
 
 For those who attended my GIT Workship last night at Dallas XAML, you can find the code and slides here: [https://github.com/trayburn/Presentation-GitWorkshop](https://github.com/trayburn/Presentation-GitWorkshop)

@@ -3,7 +3,7 @@ layout: post
 title: "Windows Phone 8 Development on a Mac"
 date: 2012-12-11 07:02
 comments: true
-categories: wp8, mac
+categories: mobile
 ---
 
 So you want to do Windows Phone 8 development on a Mac, the traditional answer to this has been, your out of luck.  The hurdles are two fold:

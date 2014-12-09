@@ -3,7 +3,7 @@ layout: post
 title: "How to be an Improver"
 date: 2012-02-21 15:34
 comments: true
-categories: improving
+categories: consulting
 ---
 {% img /images/ie-logo-small.jpg %}
 

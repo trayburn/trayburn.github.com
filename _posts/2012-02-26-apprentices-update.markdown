@@ -3,7 +3,7 @@ layout: post
 title: "Apprentices Update"
 date: 2012-02-26 10:36
 comments: true
-categories: apprenticeship
+categories: community
 ---
 
 Some time ago, [I wrote about taking my first apprentice][orig] but I've been very lax about keeping you my dear readers up to date on how that has gone.  To sum up the previous post, in January of 2011 I took an Apprentice by the name of Chris Jackson.  I'd known him for decades, literally, and he wanted to break into the programming career path.  So we set out on a time-boxed experiment.  6 months to see if we could get him employable.

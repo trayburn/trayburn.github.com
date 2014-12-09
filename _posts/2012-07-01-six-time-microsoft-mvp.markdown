@@ -3,7 +3,7 @@ layout: post
 title: "Six Time Microsoft MVP"
 date: 2012-07-01 14:11
 comments: true
-categories: mvp
+categories: consulting
 ---
 
 I'm thrilled to announce that Microsoft has deemed fit to award my efforts over the last year with a Microsoft MVP for Connected Systems Development, once again.  This marks my sixth year as an MVP, a community of such passionate leaders, contributors and influencers that it could boggle the mind.  Every MVP is different, but each brings a passion about their technology that is infectious.

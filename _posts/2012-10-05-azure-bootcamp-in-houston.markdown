@@ -3,7 +3,7 @@ layout: post
 title: "Azure Bootcamp in Houston"
 date: 2012-10-05 09:47
 comments: true
-categories: azure, houston, improving
+categories: azure consulting
 ---
 {% img /images/ie-logo-small.jpg 'Improving Enterprises Logo' 'Improving Enterprises Logo' %}
 

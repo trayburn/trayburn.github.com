@@ -3,7 +3,7 @@ layout: post
 title: "Pylon Solver for Windows Phone 7"
 date: 2012-06-14 19:22
 comments: true
-categories: wp7 marketplace
+categories: mobile
 ---
 
 {% img left /images/pylonsolver.png %}
