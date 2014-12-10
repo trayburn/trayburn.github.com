@@ -4,9 +4,10 @@ title: "Improving is looking to pay you to learn"
 date: 2014-03-17 16:06
 comments: true
 categories: consulting
+image: ie-logo.jpg
 ---
 
-{% img right /images/ie-logo-small.jpg %} My epic employer, Improving Enterprises, has a equally epic new program that we're looking to hire some new people for.  We're looking to take people with minimal to entry level development skills, not anyone who is building large enterprise applications today, and to hire these people and then pay them to go through a Boot Camp led by our best and brightest, and then at the end, provide some criteria are met, hire them as either Associate Consultants or Consultants within our organization.
+My epic employer, Improving Enterprises, has a equally epic new program that we're looking to hire some new people for.  We're looking to take people with minimal to entry level development skills, not anyone who is building large enterprise applications today, and to hire these people and then pay them to go through a Boot Camp led by our best and brightest, and then at the end, provide some criteria are met, hire them as either Associate Consultants or Consultants within our organization.
 
 Frankly this program is a huge opportunity and one I've been wanting us to have for some time now.  You're likely a candidate for this program if you meet these meager requirements:
 
