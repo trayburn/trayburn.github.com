@@ -2,60 +2,10 @@
 layout: post
 title: Consulting
 display_category: consulting
+date: 10/10/14
 ---
 ## From MarkDown
 
-```
-{{ page | debug }}
-```
 
-<section id="portfolio">
-<!-- BEGIN .page-header -->
-<header class="page-header page-header--home">
-<h2 class="home-title"><span>Related Posts</span></h2>
-</header>
-<!-- END /.page-header -->
 
-<!-- BEGIN .portfolio-3-columns  -->
-<section class="portfolio-3-columns">
-
-<!-- BEGIN .portfolio-items -->
-<div class="grid portfolio-items section-block clearfix" data-equalizer>
-
-{% for category in site.categories %}
-{% capture category_name %}{{ category | first }}{% endcapture %}
-{% if category_name == page.display_category %}
-{% for posts in category %}
-{% for post in posts limit:3 %}
-
-{% if post != page.display_category %}
-
-<article class="grid-4" data-effect="fade">
-<a href="{{ post.url }}">
-<figure>
-<span class="overlay">
-<i class="icon-add"></i>
-</span>
-<img src="/images/{{ post.image }}" alt="{{ post.title }}">
-</figure>
-<h3>{{ post.title }}</h3>
-<div class="entry-content" data-equalizer-watch>
-{{ project.description }}
-</div>
-</a>
-</article>
-
-{% endif %}
-{% endfor %}
-{% endfor %}
-{% endif %}
-{% endfor %}
-
-{% for project in site.projects %}
-
-{% endfor %}
-
-</div>
-<!-- END /.portfolio-items -->
-</section>
-</section>
+{% include post-portfolio.html %}

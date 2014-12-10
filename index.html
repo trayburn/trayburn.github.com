@@ -14,7 +14,7 @@ subtitle: Involvement, Excellence, and Dedication
       {% for section in site.navigation %}
       {% if section.description %}
       <div class="small-12 medium-6 large-4 columns service" data-effect="fade">
-        <a href="#" class="font-icon"><i class="fa fa-4x {{ section.icon }}"></i></a>
+        <a href="/{{section.url}}" class="font-icon"><i class="fa fa-4x {{ section.icon }}"></i></a>
         <h3>{{ section.name }}</h3>
         <p data-equalizer-watch>{{ section.description }}</p>
         <a href="/{{section.url}}" class="btn bordered-btn">Learn More</a>
