@@ -4,6 +4,8 @@ title: About Tim Rayburn
 date:   2014-12-08 10:00:00
 image: tim-rayburn-banner.png
 imageAlt: "Picture of Tim Rayburn"
+redirect_from:
+- /about/
 ---
 ## Bio
 
