@@ -4,7 +4,7 @@ require:
 - zurb-foundation
 import_paths:
 - bower_components/foundation/scss
-project_path: "/Users/Tim/projects/newBlog"
+project_path: "/Users/Tim/projects/blog"
 http_path: "/"
 css_dir: assets/css
 sass_dir: _sass
