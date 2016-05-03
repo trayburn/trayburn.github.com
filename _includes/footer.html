@@ -1,0 +1,30 @@
+<footer>
+
+  <div class="row">
+
+    <div class="columns small-12 medium-4">
+      <ul class="contact-list">
+        <li>{{ site.title }}</li>
+        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+      </ul>
+    </div>
+
+    <div class="columns small-12 medium-4">
+      <ul class="social-media-list">
+        {% if site.github_username %}
+        <li><a href="https://github.com/{{ site.github_username }}">GitHub: @{{ site.github_username }}</a></li>
+        {% endif %}
+
+        {% if site.twitter_username %}
+        <li><a href="http://twitter.com/{{ site.twitter_username }}">Twitter: @{{ site.twitter_username }}</a></li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <div class="columns small-12 medium-4">
+      <p>{{ site.description }}</p>
+    </div>
+
+  </div>
+
+</footer>
