@@ -53,6 +53,11 @@
 @include motion-ui-transitions;
 @include motion-ui-animations;
 
+ul.post-list  {
+  list-style-type: none;
+  margin-left: auto;
+}
+
 // Properly prevent FOUC for menu system
 .no-js {
   @include breakpoint(small only) {

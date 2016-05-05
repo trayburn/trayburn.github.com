@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<div class="small-12 columns">
+  <h2>All Blog Posts</h2>
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

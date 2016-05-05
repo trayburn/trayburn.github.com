@@ -1,19 +1,19 @@
 ---
 layout: default
 ---
-
-<div class="small-12">
-  <div>
-    {% for post in site.posts %}
-      <div>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </div>
+<div class="small-12 medium-8 columns">
+  <h1> Hello World! </h1>
+</div>
+<div class="small-12 medium-4 columns">
+  <h3>Recent Blog Posts</h3>
+  <ul class="post-list">
+    {% for post in site.posts limit:5  %}
+      <li>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </li>
     {% endfor %}
-  </div>
+  </ul>
+  <strong><a href="/blog">Listing of all {{ site.posts | size }} posts</a></strong>
 </div>
 
 <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
