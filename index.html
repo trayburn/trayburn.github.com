@@ -2,12 +2,12 @@
 layout: default
 ---
 <div class="small-12 medium-8 columns">
-  <section>
+  <section class="callout success clearfix">
     <div class="small-12 medium-8 columns">
       <strong>Do you need awesome consultants, or a great speaker?</strong>
     </div>
-    <div class="small-12 medium-4 columns">
-      <a class="button button-flat button-block primary" href="/contact">Get In Touch!</a>
+    <div class="small-12 medium-4 columns text-right">
+      <a class="button button-flat button-block primary nomargin" href="/contact">Get In Touch!</a>
     </div>
   </section>
 
@@ -22,7 +22,7 @@ layout: default
       <img class="thumbnail" src="{{ project.image }}" />
     </div>
     <div class="small-12 medium-6 columns">
-      <div><small>{{ project.description }}</small></div>
+      {{ project.description }}
     </div>
   </div>
   {% endfor %}

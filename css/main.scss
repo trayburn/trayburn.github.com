@@ -53,6 +53,10 @@
 @include motion-ui-transitions;
 @include motion-ui-animations;
 
+.nomargin {
+  margin: 0px 0px 0px 0px;
+}
+
 ul.post-list  {
   list-style-type: none;
   margin-left: auto;
