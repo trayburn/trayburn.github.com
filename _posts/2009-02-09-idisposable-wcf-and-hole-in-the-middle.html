@@ -1,0 +1,153 @@
+---
+title: "IDisposable, WCF, and Hole In The Middle"
+layout: post
+---
+<p><a href="http://stevesmithblog.com/blog">Steve Smith</a> recently <a href="http://stevesmithblog.com/blog/idisposable-and-wcf">posted about the problem</a> of the Close() (or Dispose()) method throwing an exception in WCF.&#160; He proposed a solution that was an extension method to the ICommunicationObject interface and handled safely closing the connection.&#160; Now, if you read my blog you likely know I love Extension Methods, and even more so love them on Interfaces, but his code resulted in a usage like this:</p>  <div class="csharpcode">   <pre class="alt">var myClient = <span class="kwrd">new</span> ServiceClient();</pre>
+
+  <pre><span class="kwrd">try</span></pre>
+
+  <pre class="alt">{</pre>
+
+  <pre>  <span class="kwrd">int</span> someValue = myClient.GetSomeValue();</pre>
+
+  <pre class="alt">}</pre>
+
+  <pre><span class="kwrd">finally</span></pre>
+
+  <pre class="alt">{</pre>
+
+  <pre>  myClient.CloseConnection(); <span class="rem">// extension method</span></pre>
+
+  <pre class="alt">}</pre>
+
+  <pre>&#160;</pre>
+</div>
+
+<p><style type="text/css">
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>This is ok, but as he noted doesn’t actually save you much over a using() block except that the error is not thrown from a closing brace, which is confusing.&#160; But if you look at this code, it is a classic example of a Hole In The Middle.&#160; We want to do some common setup, and common tear down, but do something different in the middle.&#160; The easiest way to get around Hole In The Middle problems in C# is to use lambdas.&#160; But of course we want to do this in a way that is easy, and preserves our type safety.</p>
+
+<p>So I sat down with Visual Studio, and after about 15 minutes came up with this:</p>
+
+<div class="csharpcode">
+  <pre class="alt">        <span class="kwrd">public</span> <span class="kwrd">static</span> TResult SafeExecution&lt;TExtension, TResult&gt;</pre>
+
+  <pre>            (<span class="kwrd">this</span> TExtension myServiceClient, </pre>
+
+  <pre class="alt">            Func&lt;TExtension, TResult&gt; serviceAction)</pre>
+
+  <pre>            <span class="kwrd">where</span> TExtension : ICommunicationObject</pre>
+
+  <pre class="alt">        {</pre>
+
+  <pre>            TResult outValue;</pre>
+
+  <pre class="alt">&#160;</pre>
+
+  <pre>            <span class="kwrd">try</span></pre>
+
+  <pre class="alt">            {</pre>
+
+  <pre>                outValue = serviceAction.Invoke(myServiceClient);</pre>
+
+  <pre class="alt">            }</pre>
+
+  <pre>            <span class="kwrd">finally</span></pre>
+
+  <pre class="alt">            {</pre>
+
+  <pre>                myServiceClient.CloseConnection();</pre>
+
+  <pre class="alt">            }</pre>
+
+  <pre>&#160;</pre>
+
+  <pre class="alt">            <span class="kwrd">return</span> outValue;</pre>
+
+  <pre>        }</pre>
+</div>
+
+<p><style type="text/css">
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>This solution <a href="http://stevesmithblog.com/blog/idisposable-and-wcf">uses the CloseConnection extension method Steve created</a>, but results in a usage that looks like this:</p>
+
+<div class="csharpcode">
+  <pre class="alt">            var ec2 = <span class="kwrd">new</span> Amazon.AmazonEC2PortTypeClient();</pre>
+
+  <pre>            ec2.SafeExecution(i =&gt; i.AllocateAddress(<span class="kwrd">null</span>));</pre>
+</div>
+
+<p><style type="text/css">
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</style>As you can see, this is a more compact, but still type-safe way of addressing this problem and does so with an Extension Method so you can re-use this code in any project you encounter.</p>
+
+<p>This is a new solution to me, so I’m certainly open to comments, but I think it is an elegant solution.&#160; What do you think?</p>

@@ -1,0 +1,182 @@
+---
+title: "DictionaryAdapter is Love (Part 2)"
+layout: post
+---
+<p>In our last installment, we learned the basics of how to use DictionaryAdapter to use an interface to access loosely structured data.&#160; This time, we’re going to show a somewhat more complex scenario than simple properties.&#160; Consider the following:</p>  <p>&#160;</p>  <pre class="brush: csharp;">        static void Main(string[] args)
+        {
+            var dict = new Dictionary&lt;string, object&gt;()
+                {
+                    { &quot;UserId&quot;, 1234567 },
+                    { 
+                        &quot;UserName&quot;, new Dictionary&lt;string,object&gt;()
+                        {
+                            { &quot;UserFirstName&quot;, &quot;Tim&quot; },
+                            { &quot;UserLastName&quot;, &quot;Rayburn&quot; }
+                        }
+                    }
+                };
+        }</pre>
+
+<p>As you can see, we’ve nested dictionaries this time, where the UserName key has a value of another dictionary, with two keys itself.&#160; The simplest model for this is to simple add another interface, IUserName, which represents this nested data.&#160; Here is a look at that code:</p>
+
+<pre class="brush: csharp;">    public interface IUserData
+    {
+        [Key(&quot;UserId&quot;)]
+        int Id { get; set; }
+
+        [Key(&quot;UserName&quot;)]
+        IUserName Name { get; set; }
+    }
+
+    public interface IUserName
+    {
+        [Key(&quot;UserFirstName&quot;)]
+        string FirstName { get; set; }
+
+        [Key(&quot;UserMiddleName&quot;)]
+        string MiddleName { get; set; }
+
+        [Key(&quot;UserLastName&quot;)]
+        string LastName { get; set; }
+    }</pre>
+
+<p>So lets see how DictionaryAdapter (it’s called DA by its friends, which if you’re still reading at this point you clearly are) … so lets see how DA handles this scenario.&#160; We’d hope that something like this would work:</p>
+
+<pre class="brush: csharp;">        static void Main(string[] args)
+        {
+            var dict = new Dictionary&lt;string, object&gt;()
+                {
+                    { &quot;UserId&quot;, 1234567 },
+                    { 
+                        &quot;UserName&quot;, new Dictionary&lt;string,object&gt;()
+                        {
+                            { &quot;UserFirstName&quot;, &quot;Tim&quot; },
+                            { &quot;UserLastName&quot;, &quot;Rayburn&quot; }
+                        }
+                    }
+                };
+
+            var data = new DictionaryAdapterFactory().GetAdapter&lt;IUserData&gt;(dict);
+
+            Console.WriteLine(data.Name.FirstName);
+        }</pre>
+
+<p>Does it? Nope.&#160; Why?&#160; Let’s look at the details:</p>
+
+<pre class="brush: csharp;">System.InvalidCastException was unhandled
+  Message=Unable to cast object of type 'System.Collections.Generic.Dictionary`2[System.String,System.Object]' to type 'Part2.IUserName'.
+  Source=Part2.Part2.IUserData.DictionaryAdapter
+  StackTrace:
+       at Part2.UserDataDictionaryAdapter.get_Name()
+       at Part2.Program.Main(String[] args) in C:\source\BlogPosts\DictionaryAdapterIsLove\Part2\Program.cs:line 32
+       at System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)
+       at System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)
+       at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()
+       at System.Threading.ThreadHelper.ThreadStart_Context(Object state)
+       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)
+       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+       at System.Threading.ThreadHelper.ThreadStart()
+  InnerException: </pre>
+
+<p>I have to give credit where credit is due, this make pretty darned clear what the problem is.&#160; Our nested dictionary is not, itself, being wrapped so when DA tries to retrieve it and cast it to IUserName it, obviously, cannot.</p>
+
+<p><strong>That’s great Tim … but how do I fix that?</strong></p>
+
+<p>Enter behaviors.&#160; Dictionary adapter has an abstraction over anything that modifies how it does its work called Behaviors.&#160; You can create behaviors for all sorts of things, but one of them is Property Getting.&#160; To modify this behavior you need to do two things:</p>
+
+<ol>
+  <li>Create a class which implements the IDictionaryPropertyGetter interface. </li>
+
+  <li>Modify your request to the Factory to request your DA use that behavior. </li>
+</ol>
+
+<p>If we take a peek at IDictionaryPropertyGetter you will see the following definition:</p>
+
+<pre class="brush: csharp;">    public interface IDictionaryPropertyGetter : IDictionaryBehavior
+    {
+        object GetPropertyValue(IDictionaryAdapter dictionaryAdapter, string key, object storedValue, PropertyDescriptor property, bool ifExists);
+    }</pre>
+
+<p>As you can see this isn’t terribly complex.&#160; But you’ll also notice that it implements IDictionaryBehavior, so lets take a peek at that shall we?</p>
+
+<pre class="brush: csharp;">    public interface IDictionaryBehavior
+    {
+        int ExecutionOrder { get; }
+    }</pre>
+
+<p>Again, not very complex at all.&#160; So we need a class that will implement both of these, and which will examine the <strong>propertyDescriptor </strong>parameter to determine if the requested Type is itself an interface which is not assignable from the type of <strong>storedValue</strong> but that <strong>storedValue</strong> is assignable from IDictionary.&#160; If those conditions are met, we can create another DictionaryAdapter to adapt to the new interface.&#160; Here is a simple example of that class :</p>
+
+<pre class="brush: csharp;">    public class NestedDictionaryGetterBehavior : IDictionaryPropertyGetter
+    {
+        public object GetPropertyValue(IDictionaryAdapter dictionaryAdapter, string key, object storedValue, PropertyDescriptor property, bool ifExists)
+        {
+            if (property.PropertyType.IsAssignableFrom(storedValue.GetType()))
+            {
+                return storedValue;
+            }
+
+            if (property.PropertyType.IsInterface &amp;&amp; IsDictionary(storedValue.GetType()))
+            {
+                return dictionaryAdapter.This.Factory.GetAdapter(property.PropertyType, storedValue as IDictionary);
+            }
+
+            return storedValue;
+        }
+
+        public int ExecutionOrder
+        {
+            get { return 0; }
+        }
+
+        private bool IsDictionary(Type type)
+        {
+            return typeof(IDictionary).IsAssignableFrom(type);
+        }
+    }</pre>
+
+<p>As you can see, some code, but not lots of code.&#160; Our example should skip the first <strong>if</strong> statement and go into the second one, returning the new DictionaryAdapter.&#160; Now we need to do step 2, modify our original request to the Factory to add our behavior.&#160; Here is what the code looks like once we’ve done that:</p>
+
+<pre class="brush: csharp;">        static void Main(string[] args)
+        {
+            var dict = new Dictionary&lt;string, object&gt;()
+                {
+                    { &quot;UserId&quot;, 1234567 },
+                    { 
+                        &quot;UserName&quot;, new Dictionary&lt;string,object&gt;()
+                        {
+                            { &quot;UserFirstName&quot;, &quot;Tim&quot; },
+                            { &quot;UserLastName&quot;, &quot;Rayburn&quot; }
+                        }
+                    }
+                };
+
+            var data = new DictionaryAdapterFactory()
+                .GetAdapter(typeof(IUserData),
+                dict,
+                new DictionaryDescriptor().AddBehavior(new NestedDictionaryGetterBehavior())) as IUserData;
+
+            Console.WriteLine(data.Name.FirstName);
+            Console.ReadLine();
+        }</pre>
+
+<p>Now, that gets a little tedious to do every time, and I can assure you that Craig Neuwirt hates tedious.&#160; As such, DictionaryAdapter will look for any <strong>attributes</strong> on your interface which implement IDictionaryBehavior and add them for you automatically.&#160; So with a very simple refactoring of our class:</p>
+
+<pre class="brush: csharp;">    public class NestedDictionaryGetterBehavior : Attribute, IDictionaryPropertyGetter</pre>
+
+<p>We can then modify our interface:</p>
+
+<pre class="brush: csharp;">    [NestedDictionaryGetterBehavior]
+    public interface IUserData
+    {
+        [Key(&quot;UserId&quot;)]
+        int Id { get; set; }
+
+        [Key(&quot;UserName&quot;)]
+        IUserName Name { get; set; }
+    }</pre>
+
+<p>And move back to a very simple DictionaryAdapterFactory request:</p>
+
+<pre class="brush: csharp;">            var data = new DictionaryAdapterFactory().GetAdapter&lt;IUserData&gt;(dict);</pre>
+
+<p>And I think that’s enough for this time.</p>
