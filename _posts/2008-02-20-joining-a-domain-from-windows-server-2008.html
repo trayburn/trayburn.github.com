@@ -1,0 +1,5 @@
+---
+title: "Joining a Domain from Windows Server 2008"
+layout: post
+---
+<p>My current client is setting up an entirely new set of machines for their project running Windows Server 2008, and this includes a new Domain Controller and so we just went through the adventure of figuring out how to have a Windows Server 2008 box join a domain.&#160; If you're having issues with this, the trick is two things:</p><ol> <li>Change your network properties to be a Private network instead of a Public network.</li><li>Go to Windows Firewall and turn it off.</li> </ol><p>Don't worry, once you're on the domain it will by policy re-enable the Firewall, so this is just a temporary change.</p>
