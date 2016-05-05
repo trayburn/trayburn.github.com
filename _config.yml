@@ -12,12 +12,34 @@ description: > # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/" # the subpath of your site, e.g. /blog
 url: "http://timrayburn.net" # the base hostname & protocol for your site
 twitter_username: trayburn
 github_username:  trayburn
 
 # Build settings
 markdown: kramdown
-
+gems:
+  - jekyll-redirect-from
+  
 permalink: /blog/:title/
+
+navigation:
+  -
+    name: Consulting
+    url: consulting
+    icon: fa-signal
+    description: Currently I work as a Vice President of Consulting at Improving Enterprises, helping organizations succeed with .NET projects, agile project management, and community engagement.
+  -
+    name: Community
+    url: community
+    icon: fa-users
+    description: I am a popular speaker throughout the country on matters .NET, Agile and career management.  I have keynoted conferences, organized conferences, led user groups, and spoken at user groups hundreds of times.
+  -
+    name: Creativity
+    url: creativity
+    icon: fa-steam
+    description: I am a passionate gamer, both table-top gaming and computer gaming. As the former host of Radio Free Hommlet, a podcast dedicated to D&amp;D 4th Edition and player of many MMORPGs I'm always ready to discuss games.
+  -
+    name: Contact
+    url: contact
