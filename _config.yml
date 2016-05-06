@@ -13,7 +13,7 @@ description: "Tim Rayburn is a Vice President of Consulting with Improving Enter
 
 # URL Config
 permalink: /blog/:title/
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://timrayburn.net" # the base hostname & protocol for your site
 
 # Social Setup
@@ -34,19 +34,19 @@ collections:
 navigation:
   -
     name: Consulting
-    url: consulting
+    url: /consulting
     icon: fa-signal
     description: Currently I work as a Vice President of Consulting at Improving Enterprises, helping organizations succeed with .NET projects, agile project management, and community engagement.
   -
     name: Community
-    url: community
+    url: /community
     icon: fa-users
     description: I am a popular speaker throughout the country on matters .NET, Agile and career management.  I have keynoted conferences, organized conferences, led user groups, and spoken at user groups hundreds of times.
   -
     name: Creativity
-    url: creativity
+    url: /creativity
     icon: fa-steam
     description: I am a passionate gamer, both table-top gaming and computer gaming. As the former host of Radio Free Hommlet, a podcast dedicated to D&amp;D 4th Edition and player of many MMORPGs I'm always ready to discuss games.
   -
     name: Contact
-    url: contact
+    url: /contact
