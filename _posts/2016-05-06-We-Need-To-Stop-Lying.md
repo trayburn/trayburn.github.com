@@ -55,7 +55,7 @@ We are less diverse, but trying to improve our diversity in:
 
 ## Lie #3 : Developers are bad at interpersonal communications
 
-I'm sure right about now you're thinking ... "wait that isn't a lie!".  But your
+I'm sure right about now you're thinking ... "wait that isn't a lie!".  But you're
 wrong.  It is a lie.  Many developers are actually pretty darned good at
 interpersonal communications.  But what they are bad at is communicating about
 things which they do not think is interesting.  Want to talk about Captain
