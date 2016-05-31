@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Improving Community BBQ"
-date: 2016-05-0631 07:00
+date: 2016-05-31 07:00
 categories: consulting
 ---
 
