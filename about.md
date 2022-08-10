@@ -5,7 +5,7 @@ title: About
 
 ## Bio
 
-Tim Rayburn is a Vice President of Consulting with [Improving Enterprises][ie], a software and project management consulting company in Dallas, TX.  He is a passionate advocate of apprenticeship and mentorship in corporate environments.  Since 2007 he has been awarded the [Microsoft MVP][mvp] in recognition of his expertise and community leadership.  He is also a [conference organizer][dtf], [an author][book], and can be found speaking across the nation on agile processes, software design, and career management.  He lives in the North Dallas area with his amazing wife Kate and their loyal dog Gandalf.
+Tim Rayburn is a Vice President of Consulting with [Improving][ie], a full service IT consulting company in headquartered Plano, TX with offices throughout North America.  He is a passionate advocate of apprenticeship and mentorship in corporate environments.  He has been awarded the [Microsoft MVP][mvp] in recognition of his expertise and community leadership 11 times, with award areas spanning from BizTalk Server to Azure.  He is [an author][book], and can be found speaking across the nation on leadership, technology, trust, mentoring, and career management.  He lives in the North Dallas area with his amazing wife Kate and their loyal dogs Radagast and Dresden.
 
 ## Contact Info
 
