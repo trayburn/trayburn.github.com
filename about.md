@@ -11,6 +11,14 @@ Tim Rayburn is a Vice President of Consulting with [Improving Enterprises][ie], 
 
 If you have questions and would like to contact me, I can be reached at Tim@TimRayburn.net or by phone at 817-760-0002.
 
+## Upcoming Conferences
+
+<script type="text/javascript" src="https://sessionize.com/api/speaker/events/d101b2c4-cdb8-4c5e-9c56-86e045b0b2d0/0x0x2952f3x"></script>
+
+## Current Abstracts
+
+<script type="text/javascript" src="https://sessionize.com/api/speaker/sessions/d101b2c4-cdb8-4c5e-9c56-86e045b0b2d0/0x0x2952f3x"></script>
+
 [mvp]: http://microsoft.com/mvp
 [book]: http://www.packtpub.com/entity-framework-4-1-experts-test-driven-development-architecture-cookbook/book
 [ie]: http://improvingenterprises.com
