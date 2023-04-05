@@ -7,3 +7,6 @@
 - title: GitHub
   url: https://github.com/trayburn
   icon: fab fa-github
+- title: Mastodon
+  url: https://mastodon.social/@trayburn
+  icon: fa-brands fa-mastodon
