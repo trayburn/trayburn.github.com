@@ -9,7 +9,7 @@
   icon: fab fa-github
 - title: Mastodon
   url: https://mastodon.social/@trayburn
-  icon: fa-brands fa-mastodon
+  icon: fas fa-elephant
 - title: LinkedIn
   url: https://www.linkedin.com/in/trayburn/
-  icon: fa-brands fa-linkedin
+  icon: fab fa-linkedin
