@@ -10,3 +10,6 @@
 - title: Mastodon
   url: https://mastodon.social/@trayburn
   icon: fa-brands fa-mastodon
+- title: LinkedIn
+  url: https://www.linkedin.com/in/trayburn/
+  icon: fa-brands fa-linkedin
